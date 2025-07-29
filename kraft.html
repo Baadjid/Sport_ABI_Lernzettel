@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kraft - Kompetenzbereich</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 25%, #e74c3c 50%, #c0392b 75%, #8e44ad 100%);
+            min-height: 100vh;
+            color: #2c3e50;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .back-button {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            border: none;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+        }
+        
+        .title {
+            font-size: 48px;
+            font-weight: 700;
+            margin: 20px 0;
+            background: linear-gradient(45deg, #e74c3c, #8e44ad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 20px;
+            color: #34495e;
+            font-style: italic;
+        }
+        
+        .section {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            border-left: 5px solid #e74c3c;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-title {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            border-bottom: 3px solid #e74c3c;
+            padding-bottom: 10px;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .info-box {
+            background: rgba(231, 76, 60, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(231, 76, 60, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .info-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.2);
+            background: rgba(231, 76, 60, 0.15);
+        }
+        
+        .info-box h4 {
+            margin: 0 0 15px 0;
+            color: #e74c3c;
+            font-size: 18px;
+        }
+        
+        .info-box ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        .info-box li {
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+        
+        .highlight {
+            background: rgba(241, 196, 15, 0.2);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #f39c12;
+        }
+        
+        .definition {
+            background: rgba(0, 0, 0, 0.05);
+            border-left: 4px solid #e74c3c;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .definition h4 {
+            margin: 0 0 10px 0;
+            color: #e74c3c;
+        }
+        
+        .exercise-box {
+            background: rgba(39, 174, 96, 0.1);
+            border: 1px solid rgba(39, 174, 96, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .exercise-box h5 {
+            margin: 0 0 10px 0;
+            color: #27ae60;
+            font-size: 16px;
+        }
+        
+        .muscle-diagram {
+            background: rgba(142, 68, 173, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            border: 2px solid rgba(142, 68, 173, 0.3);
+        }
+        
+        .tabs {
+            display: flex;
+            background: rgba(231, 76, 60, 0.1);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .tab {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            background: transparent;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        
+        .tab.active {
+            background: rgba(231, 76, 60, 0.3);
+            color: #c0392b;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .kraft-type {
+            background: rgba(155, 89, 182, 0.2);
+            border-radius: 8px;
+            padding: 3px 8px;
+            font-size: 11px;
+            color: #9b59b6;
+            font-weight: 600;
+            margin: 2px;
+            display: inline-block;
+        }
+        
+        .training-method {
+            background: rgba(52, 152, 219, 0.2);
+            border-radius: 8px;
+            padding: 3px 8px;
+            font-size: 11px;
+            color: #3498db;
+            font-weight: 600;
+            margin: 2px;
+            display: inline-block;
+        }
+        
+        .interactive-element {
+            background: rgba(155, 89, 182, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px solid rgba(155, 89, 182, 0.3);
+            text-align: center;
+        }
+        
+        .button {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            border: none;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 5px;
+        }
+        
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+        }
+        
+        .formula {
+            background: rgba(44, 62, 80, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            border: 1px solid rgba(44, 62, 80, 0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .title {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="index.html" class="back-button">← Zurück zur Übersicht</a>
+            <div class="title">💪 Kraft</div>
+            <div class="subtitle">Kraftarten, Muskelaufbau und Training</div>
+        </div>
+        
+        <!-- Wozu Krafttraining? -->
+        <div class="section">
+            <div class="section-title">1. Wozu Krafttraining?</div>
+            
+            <div class="definition">
+                <h4>Definition Kraft</h4>
+                <p>Kraft ist die Fähigkeit des Nerv-Muskel-Systems, durch Muskelkontraktion Widerstände zu überwinden (konzentrisch), ihnen entgegenzuwirken (exzentrisch) oder sie zu halten (isometrisch).</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="info-box">
+                    <h4>1.1 Vermeidung degenerativer Erkrankungen</h4>
+                    <ul>
+                        <li><span class="highlight">Osteoporose-Prävention:</span> Krafttraining stimuliert Knochenaufbau</li>
+                        <li><span class="highlight">Arthrose-Vorbeugung:</span> Stärkung der gelenkstabilisierenden Muskulatur</li>
+                        <li><span class="highlight">Rückenbeschwerden:</span> Kräftigung der Rumpfmuskulatur</li>
+                        <li><span class="highlight">Sturzprophylaxe:</span> Verbesserung von Kraft und Balance im Alter</li>
+                        <li><span class="highlight">Sarkopenie:</span> Entgegenwirken des altersbedingten Muskelschwunds</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>1.2 Verringerung der Verletzungsgefahr</h4>
+                    <ul>
+                        <li><span class="highlight">Gelenkstabilisation:</span> Schutz durch starke Muskulatur</li>
+                        <li><span class="highlight">Sehnen und Bänder:</span> Erhöhte Belastbarkeit</li>
+                        <li><span class="highlight">Körperhaltung:</span> Muskuläres Gleichgewicht</li>
+                        <li><span class="highlight">Prävention:</span> Weniger Verletzungen im Sport und Alltag</li>
+                        <li><span class="highlight">Koordination:</span> Verbesserte Bewegungskontrolle</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>1.3 Kraft als Grundlage sportlicher Leistungen</h4>
+                    <ul>
+                        <li><span class="highlight">Basis aller Bewegungen:</span> Voraussetzung für sportliche Technik</li>
+                        <li><span class="highlight">Schnelligkeit:</span> Kraft als Grundlage der Schnellkraft</li>
+                        <li><span class="highlight">Ausdauer:</span> Kraftausdauer für längere Belastungen</li>
+                        <li><span class="highlight">Koordination:</span> Präzise Bewegungsausführung</li>
+                        <li><span class="highlight">Leistungssteigerung:</span> In allen Sportarten relevant</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>1.4 "Gute Form" - Bodybuilding</h4>
+                    <ul>
+                        <li><span class="highlight">Ästhetik:</span> Formung und Definition der Muskulatur</li>
+                        <li><span class="highlight">Selbstbewusstsein:</span> Positive Körperwahrnehmung</li>
+                        <li><span class="highlight">Körperkomposition:</span> Mehr Muskelmasse, weniger Fett</li>
+                        <li><span class="highlight">Wohlbefinden:</span> Psychische Gesundheit</li>
+                        <li><span class="highlight">Lebensqualität:</span> Verbesserte Alltagsfunktionalität</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Aufbau und Funktion Skelettmuskel -->
+        <div class="section">
+            <div class="section-title">2. Aufbau und Funktion eines Skelettmuskels</div>
+            
+            <div class="tabs">
+                <button class="tab active" onclick="showTab('muscle-structure')">2.1 Muskelaufbau</button>
+                <button class="tab" onclick="showTab('muscle-coordination')">2.2 Koordination</button>
+                <button class="tab" onclick="showTab('motor-unit')">2.3 Motorische Einheit</button>
+                <button class="tab" onclick="showTab('muscle-work')">2.4 Arbeitsweise</button>
+                <button class="tab" onclick="showTab('fiber-types')">2.5 Fasertypen</button>
+            </div>
+            
+            <div id="muscle-structure" class="tab-content active">
+                <div class="content-grid">
+                    <div class="info-box">
+                        <h4>2.1 Aufbau der Skelettmuskulatur</h4>
+                        <ul>
+                            <li><span class="highlight">Muskel</span> → Muskelfaserbündel → Muskelfaser → Myofibrillen → Sarkomere</li>
+                            <li><span class="highlight">Sarkomere:</span> Grundeinheit der Muskelkontraktion</li>
+                            <li><span class="highlight">Aktin:</span> Dünne Filamente</li>
+                            <li><span class="highlight">Myosin:</span> Dicke Filamente mit Querbrücken</li>
+                            <li><span class="highlight">Z-Scheiben:</span> Begrenzung der Sarkomere</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4>Gleitfilament-Theorie der Muskelkontraktion</h4>
+                        <ul>
+                            <li><span class="highlight">Mechanismus:</span> Aktin- und Myosinfilamente gleiten ineinander</li>
+                            <li><span class="highlight">ATP-Verbrauch:</span> Energie für Querbrückenzyklus</li>
+                            <li><span class="highlight">Calcium-Ionen:</span> Auslöser der Kontraktion</li>
+                            <li><span class="highlight">Verkürzung:</span> Sarkomere werden kürzer</li>
+                            <li><span class="highlight">Entspannung:</span> Calcium wird zurückgepumpt</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="muscle-coordination" class="tab-content">
+                <div class="content-grid">
+                    <div class="info-box">
+                        <h4>2.2 Beugen und Strecken - Intermuskuläre Koordination</h4>
+                        <ul>
+                            <li><span class="highlight">Agonist:</span> Hauptbewegungsmuskel (Spieler)</li>
+                            <li><span class="highlight">Antagonist:</span> Gegenspieler, entspannt sich</li>
+                            <li><span class="highlight">Synergist:</span> Unterstützender Muskel</li>
+                            <li><span class="highlight">Fixatoren:</span> Stabilisierende Muskeln</li>
+                            <li><span class="highlight">Beispiel:</span> Bizeps (Agonist) vs. Trizeps (Antagonist)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4>Koordinative Aspekte</h4>
+                        <ul>
+                            <li><span class="highlight">Reziproke Hemmung:</span> Entspannung des Antagonisten</li>
+                            <li><span class="highlight">Co-Kontraktion:</span> Gleichzeitige Anspannung für Stabilität</li>
+                            <li><span class="highlight">Bewegungsökonomie:</span> Optimaler Krafteinsatz</li>
+                            <li><span class="highlight">Lernprozess:</span> Verbesserung durch Training</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="motor-unit" class="tab-content">
+                <div class="content-grid">
+                    <div class="info-box">
+                        <h4>2.3 Motorische Einheit</h4>
+                        <ul>
+                            <li><span class="highlight">Definition:</span> Ein Motoneuron + alle versorgte Muskelfasern</li>
+                            <li><span class="highlight">Alles-oder-Nichts-Prinzip:</span> Ganze Einheit kontrahiert</li>
+                            <li><span class="highlight">Rekrutierung:</span> Kleine vor großen Einheiten</li>
+                            <li><span class="highlight">Frequenzierung:</span> Mehr Impulse = mehr Kraft</li>
+                            <li><span class="highlight">Synchronisation:</span> Zeitlich abgestimmte Aktivierung</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4>Intramuskuläre Koordination</h4>
+                        <ul>
+                            <li><span class="highlight">Rekrutierung:</span> Anzahl aktivierter motorischer Einheiten</li>
+                            <li><span class="highlight">Frequenzierung:</span> Häufigkeit der Nervenimpulse</li>
+                            <li><span class="highlight">Synchronisation:</span> Zeitliche Abstimmung</li>
+                            <li><span class="highlight">Training:</span> Verbesserung der neuronalen Ansteuerung</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="muscle-work" class="tab-content">
+                <div class="content-grid">
+                    <div class="info-box">
+                        <h4>2.4 Arbeitsweise der Muskulatur</h4>
+                        <ul>
+                            <li><span class="highlight">Konzentrisch:</span> Muskel verkürzt sich (Überwindung)</li>
+                            <li><span class="highlight">Exzentrisch:</span> Muskel verlängert sich unter Spannung (Nachgeben)</li>
+                            <li><span class="highlight">Isometrisch:</span> Muskel spannt an ohne Längenänderung (Halten)</li>
+                            <li><span class="highlight">Isokinetisch:</span> Konstante Geschwindigkeit (nur mit Geräten)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4>Praktische Beispiele</h4>
+                        <ul>
+                            <li><span class="highlight">Konzentrisch:</span> Bizeps-Curl aufwärts</li>
+                            <li><span class="highlight">Exzentrisch:</span> Bizeps-Curl abwärts (gebremst)</li>
+                            <li><span class="highlight">Isometrisch:</span> Plank, Wandsitz</li>
+                            <li><span class="highlight">Bedeutung:</span> Exzentrisch = 1,4x stärker als konzentrisch</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="fiber-types" class="tab-content">
+                <div class="content-grid">
+                    <div class="info-box">
+                        <h4>2.5 Muskelfasertypen</h4>
+                        <ul>
+                            <li><span class="highlight">Typ I (ST):</span> Slow-Twitch, ausdauerorientiert, rot</li>
+                            <li><span class="highlight">Typ IIa (FTa):</span> Fast-Twitch, kraftausdauerorientiert</li>
+                            <li><span class="highlight">Typ IIx (FTx):</span> Fast-Twitch, kraftorientiert, weiß</li>
+                            <li><span class="highlight">Verteilung:</span> Genetisch bedingt, sportartspezifisch</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4>Eigenschaften der Fasertypen</h4>
+                        <ul>
+                            <li><span class="highlight">Typ I:</span> Viele Mitochondrien, ermüdungsresistent</li>
+                            <li><span class="highlight">Typ IIa:</span> Mittel zwischen Typ I und IIx</li>
+                            <li><span class="highlight">Typ IIx:</span> Schnelle Kontraktion, schnelle Ermüdung</li>
+                            <li><span class="highlight">Training:</span> Kann Fasertyp-Eigenschaften beeinflussen</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Kraftfähigkeiten -->
+        <div class="section">
+            <div class="section-title">3. Welche Kraftfähigkeiten sind für Gesundheit und Fitness wichtig?</div>
+            
+            <div class="content-grid">
+                <div class="info-box">
+                    <h4>3.1 Maximalkraft</h4>
+                    <div class="kraft-type">Kraftfähigkeit</div>
+                    <ul>
+                        <li><span class="highlight">Definition:</span> Höchstmögliche Kraft bei willkürlicher Kontraktion</li>
+                        <li><span class="highlight">Grundlage:</span> Aller anderen Kraftfähigkeiten</li>
+                        <li><span class="highlight">Alltagsrelevanz:</span> Schwere Gegenstände heben</li>
+                        <li><span class="highlight">Training:</span> 1-6 Wiederholungen, 85-100% 1RM</li>
+                        <li><span class="highlight">Adaptationen:</span> Neural + strukturell</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>3.2 Schnellkraft</h4>
+                    <div class="kraft-type">Kraftfähigkeit</div>
+                    <ul>
+                        <li><span class="highlight">Definition:</span> Fähigkeit, hohe Kraftwerte in kurzer Zeit zu entwickeln</li>
+                        <li><span class="highlight">Formel:</span> Kraft × Geschwindigkeit = Leistung</li>
+                        <li><span class="highlight">Alltagsrelevanz:</span> Sprünge, schnelle Richtungswechsel</li>
+                        <li><span class="highlight">Training:</span> 6-10 Wiederholungen, 50-80% 1RM, explosiv</li>
+                        <li><span class="highlight">Plyometrie:</span> Sprung- und Wurfübungen</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>3.3 Kraftausdauer</h4>
+                    <div class="kraft-type">Kraftfähigkeit</div>
+                    <ul>
+                        <li><span class="highlight">Definition:</span> Widerstandsfähigkeit gegen Ermüdung bei Krafteinsätzen</li>
+                        <li><span class="highlight">Alltagsrelevanz:</span> Lange Aktivitäten, Haltungsarbeit</li>
+                        <li><span class="highlight">Training:</span> 15-30+ Wiederholungen, 30-60% 1RM</li>
+                        <li><span class="highlight">Adaptationen:</span> Metabolisch + strukturell</li>
+                        <li><span class="highlight">Gesundheit:</span> Wichtigste Kraftfähigkeit für Fitness</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Krafttraining -->
+        <div class="section">
+            <div class="section-title">4. Krafttraining - Methoden und Prinzipien</div>
+            
+            <div class="content-grid">
+                <div class="info-box">
+                    <h4>4.1 Ziele und Voraussetzungen</h4>
+                    <ul>
+                        <li><span class="highlight">Muskelhypertrophie:</span> Muskelwachstum und -definition</li>
+                        <li><span class="highlight">Kraftzuwachs:</span> Ohne notwendige Massezunahme</li>
+                        <li><span class="highlight">Körperhaltung:</span> Muskuläres Gleichgewicht</li>
+                        <li><span class="highlight">Alltagstauglichkeit:</span> Funktionelle Kraft</li>
+                        <li><span class="highlight">Verletzungsprävention:</span> Stabilität und Schutz</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>4.2 Trainingsmethoden</h4>
+                    <ul>
+                        <li><span class="training-method">Muskelaufbautraining:</span> 8-12 Wdh., 70-80% 1RM</li>
+                        <li><span class="training-method">Schnellkrafttraining:</span> 6-10 Wdh., 50-80% 1RM, explosiv</li>
+                        <li><span class="training-method">Kraftausdauertraining:</span> 15-30+ Wdh., 30-60% 1RM</li>
+                        <li><span class="training-method">Maximalkrafttraining:</span> 1-6 Wdh., 85-100% 1RM</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="definition">
+                <h4>Trainingsparameter im Krafttraining</h4>
+                <div class="formula">
+                    Trainingsvolumen = Sätze × Wiederholungen × Gewicht<br>
+                    Trainingsintensität = % des 1RM (One Repetition Maximum)<br>
+                    Trainingsdichte = Pause-zu-Belastung-Verhältnis
+                </div>
+            </div>
+        </div>
+        
+        <!-- Trainingsplanung -->
+        <div class="section">
+            <div class="section-title">5. Trainingsplanung und Tipps zum Krafttraining</div>
+            
+            <div class="exercise-box">
+                <h5>🎯 Grundprinzipien des Krafttrainings</h5>
+                <ul>
+                    <li><strong>Progressive Overload:</strong> Kontinuierliche Steigerung der Belastung</li>
+                    <li><strong>Spezifität:</strong> Training entsprechend dem Ziel</li>
+                    <li><strong>Superkompensation:</strong> Anpassung durch optimale Erholung</li>
+                    <li><strong>Reversibilität:</strong> "Use it or lose it"</li>
+                    <li><strong>Individualität:</strong> Anpassung an persönliche Voraussetzungen</li>
+                </ul>
+            </div>
+            
+            <div class="content-grid">
+                <div class="info-box">
+                    <h4>Trainingsaufbau einer Einheit</h4>
+                    <ul>
+                        <li><strong>Aufwärmen (15 Min.):</strong> Allgemein + spezifisch</li>
+                        <li><strong>Hauptteil (30-45 Min.):</strong> Große vor kleinen Muskelgruppen</li>
+                        <li><strong>Abwärmen (10 Min.):</strong> Dehnung und Entspannung</li>
+                        <li><strong>Regeneration:</strong> 48-72h zwischen Einheiten</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>Häufige Fehler vermeiden</h4>
+                    <ul>
+                        <li>Zu schwere Gewichte zu früh verwenden</li>
+                        <li>Falsche Technik durch Ego-Training</li>
+                        <li>Unzureichende Regeneration zwischen Einheiten</li>
+                        <li>Einseitiges Training (nur "Spiegel-Muskeln")</li>
+                        <li>Vernachlässigung der Rumpfstabilität</li>
+                        <li>Zu schnelle Progression ohne Technikfokus</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>Wöchentliche Trainingsplanung</h4>
+                    <ul>
+                        <li><strong>Anfänger:</strong> 2-3x/Woche Ganzkörpertraining</li>
+                        <li><strong>Fortgeschrittene:</strong> 3-4x/Woche Split-Training</li>
+                        <li><strong>Leistungssportler:</strong> 4-6x/Woche spezialisiert</li>
+                        <li><strong>Regeneration:</strong> Mindestens 1-2 Ruhetage</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Arbeitsblätter -->
+        <div class="section">
+            <div class="section-title">📋 Arbeitsblätter und praktische Anwendung</div>
+            
+            <!-- Arbeitsblatt IV -->
+            <div class="muscle-diagram">
+                <h4>📊 Arbeitsblatt IV: Arbeitsweisen der Muskulatur - Sprungkraft messen</h4>
+                <p><strong>Ziel:</strong> Bestimmung der Sprungkraft mit verschiedenen Testverfahren zur Analyse der Arbeitsweisen</p>
+                
+                <div class="content-grid">
+                    <div class="info-box">
+                        <h4>Counter Movement Jump (CMJ)</h4>
+                        <ul>
+                            <li>Sprung aus der Hocke mit Ausholbewegung</li>
+                            <li>Misst die Schnellkraft der Beine</li>
+                            <li>Kombination aus exzentrischer und konzentrischer Arbeit</li>
+                            <li>Normal: 30-50cm je nach Alter/Geschlecht</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4>Squat Jump (SJ)</h4>
+                        <ul>
+                            <li>Sprung ohne Ausholbewegung aus statischer Position</li>
+                            <li>Rein konzentrische Muskelarbeit</li>
+                            <li>Misst die Explosivkraft</li>
+                            <li>Meist 10-15% niedriger als CMJ</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4>Drop Jump</h4>
+                        <ul>
+                            <li>Sprung nach Tiefsprung von erhöhter Position</li>
+                            <li>Reaktivkraft und Dehnungs-Verkürzungs-Zyklus</li>
+                            <li>Sehr kurze Bodenkontaktzeit erwünscht</li>
+                            <li>Höchste Anforderungen an neuromuskuläre Koordination</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="formula">
+                    Sprunghöhe (cm) = (Flugzeit (s))² × 1,225<br>
+                    <small>Vereinfachte Formel für die Berechnung der Sprunghöhe aus der Flugzeit</small>
+                </div>
+            </div>
+            
+            <!-- Arbeitsblatt V -->
+            <div class="exercise-box">
+                <h5>🔄 Arbeitsblatt V: Circuittraining - Test der Kraftausdauer an 6 Stationen</h5>
+                <p><strong>Ziel:</strong> Systematische Erfassung der Kraftausdauerleistung verschiedener Muskelgruppen</p>
+                
+                <div class="content-grid">
+                    <div class="info-box">
+                        <h4>Station 1: Oberkörper-Druckkraft</h4>
+                        <ul>
+                            <li><strong>Übung:</strong> Liegestütze (verschiedene Varianten)</li>
+                            <li><strong>Zeit:</strong> 45 Sekunden Belastung</li>
+                            <li><strong>Pause:</strong> 15 Sekunden zur nächsten Station</li>
+                            <li><strong>Bewertung:</strong> Anzahl korrekt ausgeführter Wiederholungen</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4>Station 2: Beinmuskulatur</h4>
+                        <ul>
+                            <li><strong>Übung:</strong> Kniebeugen (Bodyweight Squats)</li>
+                            <li><strong>Zeit:</strong> 45 Sekunden Belastung</li>
+                            <li><strong>Technik:</strong> 90° Kniewinkel, aufrechter Oberkörper</li>
+                            <li><strong>Bewertung:</strong> Anzahl korrekt ausgeführter Wiederholungen</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4>Station 3: Rumpfstabilität</h4>
+                        <ul>
+                            <li><strong>Übung:</strong> Plank oder Sit-ups</li>
+                            <li><strong>Zeit:</strong> 45 Sekunden Belastung</li>
+                            <li><strong>Technik:</strong> Körperspannung, neutrale Wirbelsäule</li>
+                            <li><strong>Bewertung:</strong> Haltezeit oder Wiederholungen</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4>Station 4: Funktionelle Ganzkörperkraft</h4>
+                        <ul>
+                            <li><strong>Übung:</strong> Burpees</li>
+                            <li><strong>Zeit:</strong> 45 Sekunden Belastung</li>
+                            <li><strong>Technik:</strong> Fließende Bewegung, vollständige Streckung</li>
+                            <li><strong>Bewertung:</strong> Anzahl kompletter Zyklen</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4>Station 5: Koordination & Schnellkraft</h4>
+                        <ul>
+                            <li><strong>Übung:</strong> Mountain Climbers</li>
+                            <li><strong>Zeit:</strong> 45 Sekunden Belastung</li>
+                            <li><strong>Technik:</strong> Stützposition, schneller Beinwechsel</li>
+                            <li><strong>Bewertung:</strong> Anzahl Beinwechsel (beide Beine = 1)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4>Station 6: Kardiovaskuläre Ausdauer</h4>
+                        <ul>
+                            <li><strong>Übung:</strong> Jumping Jacks (Hampelmann)</li>
+                            <li><strong>Zeit:</strong> 45 Sekunden Belastung</li>
+                            <li><strong>Technik:</strong> Vollständige Bewegungsamplitude</li>
+                            <li><strong>Bewertung:</strong> Anzahl kompletter Sprünge</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="formula">
+                    Gesamttraining: 3-4 Runden × 6 Stationen = 18-24 Minuten<br>
+                    Pausenzeit zwischen Runden: 2-3 Minuten für Erholung<br>
+                    <small>Dokumentation: Leistung pro Station und Runde für Verlaufskontrolle</small>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Kraftausdauertest Bewertung -->
+        <div class="section">
+            <div class="section-title">📊 Test der Kraftausdauer - Bewertung und Normen</div>
+            
+            <div class="content-grid">
+                <div class="info-box">
+                    <h4>Standardisierte Kraftausdauertests</h4>
+                    <ul>
+                        <li><strong>Liegestütz-Test:</strong> Maximale Anzahl in 60 Sekunden</li>
+                        <li><strong>Sit-up-Test:</strong> Maximale Anzahl in 60 Sekunden</li>
+                        <li><strong>Klimmzug-Test:</strong> Maximale Anzahl bis zur Erschöpfung</li>
+                        <li><strong>Wandsitz-Test:</strong> Maximale Haltezeit in Sekunden</li>
+                        <li><strong>Plank-Test:</strong> Maximale Haltezeit in Sekunden</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>Bewertungskriterien (Beispiel: Liegestütze/60s)</h4>
+                    <ul>
+                        <li><strong>Männlich 16-19 Jahre:</strong></li>
+                        <li>Sehr gut: >47 | Gut: 35-47 | Befriedigend: 19-34</li>
+                        <li><strong>Weiblich 16-19 Jahre:</strong></li>
+                        <li>Sehr gut: >33 | Gut: 18-33 | Befriedigend: 12-17</li>
+                        <li><strong>Wichtig:</strong> Korrekte Technik vor Quantität</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>Dokumentation und Verlaufskontrolle</h4>
+                    <ul>
+                        <li>Regelmäßige Wiederholung der Tests (alle 4-6 Wochen)</li>
+                        <li>Individuelle Fortschrittsdokumentation</li>
+                        <li>Berücksichtigung von Trainingspausen</li>
+                        <li>Motivation durch sichtbare Verbesserungen</li>
+                        <li>Anpassung des Trainings basierend auf Testergebnissen</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Interaktive Elemente -->
+        <div class="interactive-element">
+            <h4>💡 1RM-Rechner & Trainingszonenbestimmung</h4>
+            <p>Berechne dein theoretisches 1-Repetition-Maximum und erhalte deine optimalen Trainingsbereiche:</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin: 20px 0;">
+                <input type="number" id="weight" placeholder="Gewicht (kg)" style="padding: 10px; border-radius: 5px; border: none;">
+                <input type="number" id="reps" placeholder="Wiederholungen" style="padding: 10px; border-radius: 5px; border: none;">
+                <select id="exercise-type" style="padding: 10px; border-radius: 5px; border: none;">
+                    <option value="">Übung wählen</option>
+                    <option value="bench">Bankdrücken</option>
+                    <option value="squat">Kniebeuge</option>
+                    <option value="deadlift">Kreuzheben</option>
+                    <option value="other">Andere Übung</option>
+                </select>
+                <select id="training-goal" style="padding: 10px; border-radius: 5px; border: none;">
+                    <option value="">Trainingsziel</option>
+                    <option value="strength">Maximalkraft</option>
+                    <option value="hypertrophy">Muskelaufbau</option>
+                    <option value="endurance">Kraftausdauer</option>
+                </select>
+            </div>
+            <button class="button" onclick="calculate1RM()">Berechnen</button>
+            <div id="rm-result" style="margin-top: 20px; font-weight: 600;"></div>
+        </div>
+        
+        <!-- Praktische Übungen -->
+        <div class="section">
+            <div class="section-title">🏋️‍♂️ Praktische Kraftübungen für den Schulalltag</div>
+            
+            <div class="content-grid">
+                <div class="exercise-box">
+                    <h5>Bodyweight-Übungen (ohne Geräte)</h5>
+                    <ul>
+                        <li><strong>Oberkörper:</strong> Liegestütze, Dips, Pike Push-ups</li>
+                        <li><strong>Unterkörper:</strong> Squats, Lunges, Single-Leg Glute Bridges</li>
+                        <li><strong>Core:</strong> Plank Variationen, Dead Bug, Bird Dog</li>
+                        <li><strong>Ganzkörper:</strong> Burpees, Bear Crawl, Turkish Get-ups</li>
+                    </ul>
+                </div>
+                
+                <div class="exercise-box">
+                    <h5>Partner-Übungen</h5>
+                    <ul>
+                        <li><strong>Partner-Widerstand:</strong> Isometrische Übungen mit Partner</li>
+                        <li><strong>Wheelbarrow Walks:</strong> Funktionelle Ganzkörperkraft</li>
+                        <li><strong>Partner-Carries:</strong> Fireman's Carry, Piggyback</li>
+                        <li><strong>Medizinball-Übungen:</strong> Würfe und Fänge</li>
+                    </ul>
+                </div>
+                
+                <div class="exercise-box">
+                    <h5>Kleingeräte-Training</h5>
+                    <ul>
+                        <li><strong>Therabänder:</strong> Widerstandstraining für alle Muskelgruppen</li>
+                        <li><strong>Kettlebells:</strong> Funktionelle Bewegungen, Swings</li>
+                        <li><strong>Medizinbälle:</strong> Explosive Würfe, Rotationstraining</li>
+                        <li><strong>TRX/Schlingen:</strong> Instabiles Training, Eigengewicht</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Zusammenfassung -->
+        <div class="section">
+            <div class="section-title">🎯 Zusammenfassung: Kraft als Basis der Fitness</div>
+            
+            <div class="content-grid">
+                <div class="info-box">
+                    <h4>Gesundheitliche Bedeutung</h4>
+                    <ul>
+                        <li>Prävention degenerativer Erkrankungen</li>
+                        <li>Verletzungsprophylaxe im Sport und Alltag</li>
+                        <li>Verbesserung der Lebensqualität</li>
+                        <li>Erhaltung der Selbstständigkeit im Alter</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>Trainingsmethodische Grundsätze</h4>
+                    <ul>
+                        <li>Progressive Belastungssteigerung</li>
+                        <li>Spezifisches Training je nach Ziel</li>
+                        <li>Ausgewogenes Training aller Muskelgruppen</li>
+                        <li>Technik vor Intensität</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>Praktische Umsetzung</h4>
+                    <ul>
+                        <li>Regelmäßigkeit wichtiger als Intensität</li>
+                        <li>Funktionelle Übungen bevorzugen</li>
+                        <li>Regeneration als Trainingsbestandteil</li>
+                        <li>Individuelle Anpassung an Leistungsniveau</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function showTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab content
+            document.getElementById(tabId).classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+        
+        function calculate1RM() {
+            const weight = parseFloat(document.getElementById('weight').value);
+            const reps = parseInt(document.getElementById('reps').value);
+            const exerciseType = document.getElementById('exercise-type').value;
+            const trainingGoal = document.getElementById('training-goal').value;
+            
+            if (!weight || !reps || !exerciseType || !trainingGoal || weight <= 0 || reps <= 0 || reps > 20) {
+                document.getElementById('rm-result').innerHTML = '<p style="color: #e74c3c;">Bitte gib gültige Werte ein (Gewicht > 0, Wiederholungen 1-20) und wähle Übung und Ziel.</p>';
+                return;
+            }
+            
+            // Brzycki Formula: 1RM = weight / (1.0278 - 0.0278 × reps)
+            const oneRM = Math.round(weight / (1.0278 - 0.0278 * reps));
+            
+            // Calculate training zones
+            const maxKraft = { min: Math.round(oneRM * 0.85), max: oneRM };
+            const hypertrophy = { min: Math.round(oneRM * 0.65), max: Math.round(oneRM * 0.85) };
+            const kraftausdauer = { min: Math.round(oneRM * 0.4), max: Math.round(oneRM * 0.65) };
+            const schnellkraft = { min: Math.round(oneRM * 0.5), max: Math.round(oneRM * 0.8) };
+            
+            // Goal-specific recommendations
+            let recommendation = "";
+            let primaryZone = "";
+            
+            switch(trainingGoal) {
+                case 'strength':
+                    primaryZone = `${maxKraft.min}-${maxKraft.max} kg (85-100% 1RM)`;
+                    recommendation = "Fokus auf Maximalkraft: 1-6 Wiederholungen, 3-5 Sätze, 3-5 Min Pause";
+                    break;
+                case 'hypertrophy':
+                    primaryZone = `${hypertrophy.min}-${hypertrophy.max} kg (65-85% 1RM)`;
+                    recommendation = "Fokus auf Muskelaufbau: 6-12 Wiederholungen, 3-4 Sätze, 1-3 Min Pause";
+                    break;
+                case 'endurance':
+                    primaryZone = `${kraftausdauer.min}-${kraftausdauer.max} kg (40-65% 1RM)`;
+                    recommendation = "Fokus auf Kraftausdauer: 12-25+ Wiederholungen, 2-3 Sätze, 30-90s Pause";
+                    break;
+            }
+            
+            document.getElementById('rm-result').innerHTML = `
+                <div style="text-align: left; max-width: 800px; margin: 0 auto;">
+                    <h4>Deine Kraftwerte für ${exerciseType === 'bench' ? 'Bankdrücken' : exerciseType === 'squat' ? 'Kniebeuge' : exerciseType === 'deadlift' ? 'Kreuzheben' : 'deine Übung'}:</h4>
+                    
+                    <div style="background: rgba(0,0,0,0.05); padding: 15px; border-radius: 8px; margin: 10px 0;">
+                        <strong>Geschätztes 1RM:</strong> ${oneRM} kg
+                    </div>
+                    
+                    <div style="background: rgba(231,76,60,0.1); padding: 15px; border-radius: 8px; margin: 10px 0;">
+                        <strong>🎯 Dein Haupttrainingsbereich (${trainingGoal === 'strength' ? 'Maximalkraft' : trainingGoal === 'hypertrophy' ? 'Muskelaufbau' : 'Kraftausdauer'}):</strong><br>
+                        ${primaryZone}<br>
+                        <small>${recommendation}</small>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin: 15px 0;">
+                        <div style="background: rgba(231,76,60,0.2); padding: 10px; border-radius: 6px; text-align: center;">
+                            <strong>Maximalkraft</strong><br>
+                            ${maxKraft.min}-${maxKraft.max} kg<br>
+                            <small>1-6 Wdh.</small>
+                        </div>
+                        
+                        <div style="background: rgba(243,156,18,0.2); padding: 10px; border-radius: 6px; text-align: center;">
+                            <strong>Hypertrophie</strong><br>
+                            ${hypertrophy.min}-${hypertrophy.max} kg<br>
+                            <small>6-12 Wdh.</small>
+                        </div>
+                        
+                        <div style="background: rgba(155,89,182,0.2); padding: 10px; border-radius: 6px; text-align: center;">
+                            <strong>Schnellkraft</strong><br>
+                            ${schnellkraft.min}-${schnellkraft.max} kg<br>
+                            <small>6-10 Wdh. explosiv</small>
+                        </div>
+                        
+                        <div style="background: rgba(39,174,96,0.2); padding: 10px; border-radius: 6px; text-align: center;">
+                            <strong>Kraftausdauer</strong><br>
+                            ${kraftausdauer.min}-${kraftausdauer.max} kg<br>
+                            <small>15+ Wdh.</small>
+                        </div>
+                    </div>
+                    
+                    <div style="background: rgba(52,152,219,0.1); padding: 15px; border-radius: 8px; margin: 15px 0;">
+                        <strong>⚠️ Sicherheitshinweise:</strong><br>
+                        • Immer mit korrekter Technik trainieren<br>
+                        • Bei Maximalkraft-Tests: Partner oder Spotter verwenden<br>
+                        • Progressive Steigerung über mehrere Wochen<br>
+                        • Bei Schmerzen sofort pausieren
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Animation on load
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach((section, index) => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(30px)';
+                setTimeout(() => {
+                    section.style.transition = 'all 0.6s ease';
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+        });
+    </script>
+</body>
+</html>

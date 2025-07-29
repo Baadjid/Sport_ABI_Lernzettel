@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sport Bildungsplan - Komplette Übersicht</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 25%, #3498db 50%, #2980b9 75%, #1abc9c 100%);
+            min-height: 100vh;
+            color: #2c3e50;
+        }
+        
+        .container {
+            max-width: 1800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .title {
+            font-size: 36px;
+            font-weight: 700;
+            margin: 20px 0;
+            background: linear-gradient(45deg, #2c3e50, #3498db);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: #34495e;
+            font-style: italic;
+        }
+        
+        .main-section {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            border-left: 5px solid #3498db;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-title {
+            font-size: 28px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+        
+        .chapter {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 5px solid #3498db;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .chapter-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .topic-box {
+            background: rgba(52, 152, 219, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            border: 1px solid rgba(52, 152, 219, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .topic-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.2);
+            background: rgba(52, 152, 219, 0.15);
+        }
+        
+        .topic-box h4 {
+            margin: 0 0 10px 0;
+            color: #2980b9;
+            font-size: 16px;
+        }
+        
+        .topic-box ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .topic-box li {
+            margin: 5px 0;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        .page-ref {
+            background: rgba(241, 196, 15, 0.2);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #f39c12;
+            float: right;
+        }
+        
+        .arbeitsblatt {
+            background: rgba(39, 174, 96, 0.1);
+            border: 1px solid rgba(39, 174, 96, 0.3);
+            border-radius: 8px;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        
+        .arbeitsblatt h5 {
+            margin: 0 0 8px 0;
+            color: #27ae60;
+            font-size: 14px;
+        }
+        
+        .toc-navigation {
+            background: rgba(155, 89, 182, 0.1);
+            border: 2px solid #9b59b6;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .nav-link {
+            background: #9b59b6;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            background: #8e44ad;
+            transform: translateY(-2px);
+        }
+        
+        .level-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .level-box {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 20px;
+            border: 2px solid #3498db;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .level-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.2);
+        }
+        
+        .level-header {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+        }
+        
+        .level-grundlagen .level-header {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+        
+        .level-doppelauftrag .level-header {
+            background: linear-gradient(135deg, #8e44ad, #9b59b6);
+        }
+        
+        .level-sinnrichtungen .level-header {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+        }
+        
+        .level-kompetenzen .level-header {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+        }
+        
+        .sinnrichtung {
+            background: rgba(255, 107, 107, 0.2);
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #e74c3c;
+            margin: 2px;
+            display: inline-block;
+        }
+        
+        .kompetenz {
+            background: rgba(52, 152, 219, 0.2);
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #3498db;
+            margin: 2px;
+            display: inline-block;
+        }
+        
+        .emphasis {
+            font-style: italic;
+            color: #e74c3c;
+            font-size: 12px;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+        
+        .arrow-down {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+            position: relative;
+        }
+        
+        .arrow-down::before {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 20px solid #3498db;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        }
+        
+        .summary-box {
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), rgba(155, 89, 182, 0.1));
+            border: 2px solid #3498db;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        
+        .summary-box h3 {
+            color: #2c3e50;
+            font-size: 20px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .summary-item {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .summary-item h4 {
+            margin: 0 0 10px 0;
+            color: #2980b9;
+            font-size: 14px;
+        }
+        
+        .summary-item p {
+            margin: 0;
+            font-size: 12px;
+            line-height: 1.4;
+        }
+        
+        @media (max-width: 1200px) {
+            .content-grid, .level-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .title {
+                font-size: 28px;
+            }
+            
+            .section-title {
+                font-size: 22px;
+            }
+            
+            .chapter-title {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title">🏃‍♂️ Sport Bildungsplan - Komplette Übersicht</div>
+        </div>
+        
+        <!-- Navigation zu den einzelnen Bereichen -->
+        <div class="toc-navigation">
+            <h3>🎯 Schnellnavigation zu den Kompetenzbereichen</h3>
+            <div class="nav-links">
+                <a href="ausdauer.html" class="nav-link">🏃‍♂️ Ausdauer</a>
+                <a href="kraft.html" class="nav-link">💪 Kraft</a>
+                <a href="bewegung-gesundheit.html" class="nav-link">🏥 Bewegung & Gesundheit</a>
+                <a href="ernaehrung-sport.html" class="nav-link">🥗 Ernährung & Sport</a>
+            </div>
+        </div>
+        
+        <!-- Bildungsplan-Struktur -->
+        <div class="main-section" id="bildungsplan">
+            <div class="section-title">📋 Bildungsplan-Struktur und Grundlagen</div>
+            
+            <!-- Fachspezifischer Bildungsauftrag -->
+            <div class="level-grid">
+                <div class="level-box level-grundlagen">
+                    <div class="level-header">Fachspezifischer Bildungsauftrag</div>
+                    <div class="topic-box">
+                        <h4>Bewegung, Spiel und Sport</h4>
+                        <ul>
+                            <li>Wesentliche Bestandteile ganzheitlicher Bildung</li>
+                            <li>Unverzichtbarer Beitrag als Pflichtfach</li>
+                            <li>Entgegenwirken der Bewegungsarmut</li>
+                            <li>Verbesserung der Lebensqualität</li>
+                        </ul>
+                        <div class="emphasis">→ Ganzheitliche Persönlichkeitsentfaltung</div>
+                    </div>
+                </div>
+                
+                <div class="level-box level-doppelauftrag">
+                    <div class="level-header">Doppelauftrag des Schulsports</div>
+                    <div class="topic-box">
+                        <h4>Erziehung zum Sport & durch Sport</h4>
+                        <ul>
+                            <li><strong>Zum Sport:</strong> Motivation zu lebenslangem Sporttreiben</li>
+                            <li><strong>Durch Sport:</strong> Persönlichkeitsentwicklung</li>
+                            <li>Verbindung von Praxis und Theorie</li>
+                            <li>Förderung von Bewegungsfreude und Gesundheitsbewusstsein</li>
+                        </ul>
+                        <div class="emphasis">→ Positives Körpergefühl und Persönlichkeitsstärkung</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="arrow-down"></div>
+            
+            <!-- Sinnrichtungen -->
+            <div class="level-box level-sinnrichtungen">
+                <div class="level-header">Sinnrichtungen von Sport - Mehrperspektivität</div>
+                <div class="content-grid">
+                    <div class="topic-box">
+                        <h4>Leisten erfahren und reflektieren</h4>
+                        <div class="sinnrichtung">Leistungsperspektive</div>
+                        <ul>
+                            <li>Förderung der Leistungsbereitschaft</li>
+                            <li>Unmittelbare Rückmeldung</li>
+                            <li>Erfolg oder Misserfolg erleben</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="topic-box">
+                        <h4>Gesundheitsbewusstsein entwickeln</h4>
+                        <div class="sinnrichtung">Gesundheitsperspektive</div>
+                        <ul>
+                            <li>Bewegungsmangelkrankheiten vermeiden</li>
+                            <li>Physische und psychische Gesundheit</li>
+                            <li>Verbesserung der allgemeinen Fitness</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="topic-box">
+                        <h4>Gemeinsam handeln und wettkämpfen</h4>
+                        <div class="sinnrichtung">Sozialperspektive</div>
+                        <ul>
+                            <li>Soziales Lernen fördern</li>
+                            <li>Kooperationsbereitschaft</li>
+                            <li>Erziehung zur Selbstständigkeit</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="topic-box">
+                        <h4>Sich körperlich ausdrücken</h4>
+                        <div class="sinnrichtung">Ausdrucksperspektive</div>
+                        <ul>
+                            <li>Gestaltungs- und Improvisationsaufgaben</li>
+                            <li>Ausdrucksmöglichkeiten des Körpers</li>
+                            <li>Kooperations- und Teamfähigkeit</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="topic-box">
+                        <h4>Etwas wagen und verantworten</h4>
+                        <div class="sinnrichtung">Wagnisperspektive</div>
+                        <ul>
+                            <li>Kontrollierte Risiken eingehen</li>
+                            <li>Realistische Selbsteinschätzung</li>
+                            <li>Selbstsicherheit gewinnen</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="topic-box">
+                        <h4>Wahrnehmung und Bewegungserfahrungen</h4>
+                        <div class="sinnrichtung">Wahrnehmungsperspektive</div>
+                        <ul>
+                            <li>Sinneswahrnehmung schulen</li>
+                            <li>Vielfältige Bewegungserfahrungen</li>
+                            <li>Bewegen in der Natur</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="arrow-down"></div>
+            
+            <!-- Kompetenzen -->
+            <div class="level-box level-kompetenzen">
+                <div class="level-header">Fachspezifische Handlungsfelder und Kompetenzen</div>
+                <div class="content-grid">
+                    <div class="topic-box">
+                        <h4>Motorisch</h4>
+                        <div class="kompetenz">Leistungsfähigkeit</div>
+                        <div class="kompetenz">Koordination</div>
+                        <div class="kompetenz">Körpererfahrung</div>
+                        <ul>
+                            <li>Leistungsfähigkeit verbessern und einschätzen</li>
+                            <li>Koordinative Fähigkeiten verbessern</li>
+                            <li>Bewegungs- und Körpererfahrungen erweitern</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="topic-box">
+                        <h4>Kognitiv/Reflexiv</h4>
+                        <div class="kompetenz">Gesundheitswissen</div>
+                        <div class="kompetenz">Reflexion</div>
+                        <ul>
+                            <li>Bedeutung von Bewegung für Wohlbefinden</li>
+                            <li>Kritische Auseinandersetzung mit Sport</li>
+                            <li>Selbstregulation und exekutive Funktionen</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="topic-box">
+                        <h4>Sozial/Emotional</h4>
+                        <div class="kompetenz">Freude</div>
+                        <div class="kompetenz">Kooperation</div>
+                        <ul>
+                            <li>Freude an lebenslanger sportlicher Betätigung</li>
+                            <li>Fairness und Konfliktbewältigung</li>
+                            <li>Selbstständige Planung und Verantwortung</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Detaillierte Inhalte -->
+        <div class="main-section">
+            <div class="section-title">📚 Detaillierte Lehrinhalte</div>
+            
+            <!-- I. Sich fit fühlen -->
+            <div class="chapter">
+                <div class="chapter-title">I. Sich fit fühlen </div>
+                <div class="content-grid">
+                    <div class="topic-box">
+                        <h4>Subjektives Wohlbefinden</h4>
+                        <ul>
+                            <li>Körperliche Fitness erleben</li>
+                            <li>Persönliche Leistungsfähigkeit einschätzen</li>
+                            <li>Motivation für Sport entwickeln</li>
+                            <li>Gesundheitsbewusstsein stärken</li>
+                        </ul>
+                    </div>
+                    <div class="topic-box">
+                        <h4>Fitness-Komponenten</h4>
+                        <ul>
+                            <li>Ausdauer und Herz-Kreislauf-System</li>
+                            <li>Kraft und Muskulatur</li>
+                            <li>Beweglichkeit und Flexibilität</li>
+                            <li>Koordination und Balance</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- II. Wie fit, wie gesund sind wir? -->
+            <div class="chapter">
+                <div class="chapter-title">II. Wie fit, wie gesund sind wir? </div>
+                
+                <div class="arbeitsblatt">
+                    <h5>Arbeitsblatt I: Wie fit bin ich? (Deutscher Motorik-Test, DTM)</h5>
+                    <p>Systematische Erfassung der motorischen Leistungsfähigkeit durch standardisierte Tests</p>
+                </div>
+                
+                <div class="content-grid">
+                    <div class="topic-box">
+                        <h4>Fitness-Diagnostik</h4>
+                        <ul>
+                            <li>Ausdauer-Tests (6-Minuten-Lauf, 20m-Shuttle)</li>
+                            <li>Kraft-Tests (Standweitsprung, Liegestütz)</li>
+                            <li>Schnelligkeit (20m-Sprint)</li>
+                            <li>Koordination (Balancieren rückwärts)</li>
+                            <li>Beweglichkeit (Rumpfbeuge)</li>
+                        </ul>
+                    </div>
+                    <div class="topic-box">
+                        <h4>Gesundheitsindikatoren</h4>
+                        <ul>
+                            <li>BMI und Körperkomposition</li>
+                            <li>Ruhepuls und Belastungspuls</li>
+                            <li>Blutdruck und Stoffwechsel</li>
+                            <li>Subjektives Wohlbefinden</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- III. Allgemeine Gesetzmäßigkeiten des Trainings -->
+            <div class="chapter">
+                <div class="chapter-title">III. Allgemeine Gesetzmäßigkeiten des Trainings </div>
+                
+                <div class="content-grid">
+                    <div class="topic-box">
+                        <h4>1. Qualitätsgesetz (Physiologisches Gesetz)</h4>
+                        <p><strong>Prinzip der richtigen Belastungszusammensetzung</strong></p>
+                        <ul>
+                            <li>Intensität: Wie stark die Belastung</li>
+                            <li>Umfang: Wie lange/viel die Belastung</li>
+                            <li>Dichte: Verhältnis Belastung zu Pause</li>
+                            <li>Häufigkeit: Wie oft trainiert wird</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="topic-box">
+                        <h4>2. Homöostase, Superkompensation</h4>
+                        <p><strong>Prinzip der optimalen Relation von Belastung und Erholung</strong></p>
+                        <ul>
+                            <li>Belastungsphase: Energieverbrauch</li>
+                            <li>Ermüdungsphase: Leistungsabfall</li>
+                            <li>Erholungsphase: Regeneration</li>
+                            <li>Superkompensation: Leistungssteigerung</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="topic-box">
+                        <h4>3. Reizschwellengesetz</h4>
+                        <p><strong>Prinzip des trainingswirksamen Reizes</strong></p>
+                        <ul>
+                            <li>Unterschwelliger Reiz: Keine Anpassung</li>
+                            <li>Schwellenreiz: Gerade ausreichend</li>
+                            <li>Optimaler Reiz: Beste Anpassung</li>
+                            <li>Überschwelliger Reiz: Schädigung</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="topic-box">
+                        <h4>4. Trainierbarkeit und Leistungsfähigkeit</h4>
+                        <ul>
+                            <li>Individuelle Unterschiede berücksichtigen</li>
+                            <li>Altersgerechte Trainingsgestaltung</li>
+                            <li>Geschlechtsspezifische Anpassungen</li>
+                            <li>Genetische Faktoren beachten</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- IV. Ausdauer -->
+            <div class="chapter" id="ausdauer">
+                <div class="chapter-title">IV. Ausdauer </div>
+                
+                <div class="content-grid">
+                    <div class="topic-box">
+                        <h4>1. Lohnt sich Ausdauertraining?</h4>
+                        <ul>
+                            <li>Gesundheitliche Vorteile</li>
+                            <li>Herz-Kreislauf-Stärkung</li>
+                            <li>Stoffwechselverbesserung</li>
+                            <li>Psychisches Wohlbefinden</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="topic-box">
+                        <h4>2. Energiebereitstellung</h4>
+                        <ul>
+                            <li>2.1 Leistungsbestimmende Faktoren</li>
+                            <li>2.2 Energiegewinnung in Muskelzellen</li>
+                            <li>2.3 Belastungsintensität und Schwellenwerte</li>
+                            <li>2.4 Anpassungen des Herz-Kreislaufsystems</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="topic-box">
+                        <h4>3. Ausdauerfähigkeiten für Gesundheit</h4>
+                        <ul>
+                            <li>3.1 Allgemeine aerobe Ausdauer</li>
+                            <li>3.2 Grundlagenausdauer</li>
+                            <li>3.3 Anaerobe Ausdauer</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="topic-box">
+                        <h4>4. Ausdauertraining</h4>
+                        <ul>
+                            <li>4.1 Ziele und Voraussetzungen</li>
+                            <li>4.2 Dauermethoden</li>
+                            <li>4.3 Intervallmethoden (inkl. HIIT)</li>
+                            <li>4.4 Belastungssteuerung</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="arbeitsblatt">
+                    <h5>Arbeitsblatt II: Herzfrequenz als Messgröße</h5>
+                    <p>Praktische Anwendung der Herzfrequenz zur Trainingssteuerung</p>
+                </div>
+                
+                <div class="arbeitsblatt">
+                    <h5>Arbeitsblatt III: Energiebereitstellung und Belastungsintensität</h5>
+                    <p>Analyse der Energiesysteme in Abhängigkeit von der Belastungsdauer</p>
+                </div>
+            </div>
+            
+            <!-- V. Kraft -->
+            <div class="chapter" id="kraft">
+                <div class="chapter-title">V. Kraft </div>
+                
+                <div class="content-grid">
+                    <div class="topic-box">
+                        <h4>1. Wozu Krafttraining?</h4>
+                        <ul>
+                            <li>1.1 Vermeidung degenerativer Erkrankungen</li>
+                            <li>1.2 Verringerung der Verletzungsgefahr</li>
+                            <li>1.3 Kraft als Grundlage sportlicher Leistungen</li>
+                            <li>1.4 "Gute Form" - Bodybuilding</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="topic-box">
+                        <h4>2. Aufbau und Funktion Skelettmuskel</h4>
+                        <ul>
+                            <li>2.1 Muskelaufbau und Kontraktionstheorie</li>
+                            <li>2.2 Beugen und Strecken, Koordination</li>
+                            <li>2.3 Motorische Einheit</li>
+                            <li>2.4 Arbeitsweise der Muskulatur</li>
+                            <li>2.5 Muskelfasertypen</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="topic-box">
+                        <h4>3. Kraftfähigkeiten</h4>
+                        <ul>
+                            <li>3.1 Maximalkraft</li>
+                            <li>3.2 Schnellkraft</li>
+                            <li>3.3 Kraftausdauer</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="topic-box">
+                        <h4>4. Krafttraining</h4>
+                        <ul>
+                            <li>4.1 Ziele und Voraussetzungen</li>
+                            <li>4.2 Trainingsmethoden</li>
+                            <li>Muskelaufbautraining</li>
+                            <li>Schnellkrafttraining</li>
+                            <li>Kraftausdauertraining</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="arbeitsblatt">
+                    <h5>Arbeitsblatt IV: Arbeitsweisen der Muskulatur</h5>
+                    <p>Sprungkraft messen und analysieren</p>
+                </div>
+                
+                <div class="arbeitsblatt">
+                    <h5>Arbeitsblatt V: Circuittraining</h5>
+                    <p>Test der Kraftausdauer an 6 Stationen</p>
+                </div>
+            </div>
+            
+            <!-- VI. Bewegung, Gesundheit, Körpergewicht -->
+            <div class="chapter" id="gesundheit">
+                <div class="chapter-title">VI. Bewegung, Gesundheit, Körpergewicht</div>
+                
+                <div class="content-grid">
+                    <div class="topic-box">
+                        <h4>1. Bewegung für die Gesundheit - /h4>
+                        <ul>
+                            <li>WHO-Empfehlungen für körperliche Aktivität</li>
+                            <li>Gesundheitliche Vorteile regelmäßiger Bewegung</li>
+                            <li>Bewegungsmangelkrankheiten vermeiden</li>
+                            <li>Präventive Maßnahmen im Alltag</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="topic-box">
+                        <h4>2. Bewegung und Körpergewicht</h4>
+                        <ul>
+                            <li>BMI-Berechnung und Bewertung</li>
+                            <li>Körperkomposition vs. Körpergewicht</li>
+                            <li>Gesundheitsrisiken bei Übergewicht</li>
+                            <li>Alternative Messverfahren</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="topic-box">
+                        <h4>3. Bewegung und Fettabbau</h4>
+                        <ul>
+                            <li>Energiebilanz und Gewichtsreduktion</li>
+                            <li>Fettverbrennungszone verstehen</li>
+                            <li>Optimale Trainingsformen</li>
+                            <li>Nachbrenneffekt nutzen</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- VII. Ernährung und Sport -->
+            <div class="chapter" id="ernaehrung">
+                <div class="chapter-title">VII. Ernährung und Sport </div>
+                
+                <div class="content-grid">
+                    <div class="topic-box">
+                        <h4>1. Energiebedarf - </h4>
+                        <ul>
+                            <li>Grundumsatz und Leistungsumsatz</li>
+                            <li>Sportartspezifischer Energieverbrauch</li>
+                            <li>Kalorienberechnung für Sportler</li>
+                            <li>Energiebedarfsanpassung</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="topic-box">
+                        <h4>2. Kohlenhydrate, Proteine und Fette</h4>
+                        <ul>
+                            <li>Makronährstoffe und ihre Funktionen</li>
+                            <li>Optimale Verteilung für Sportler</li>
+                            <li>Timing der Nährstoffaufnahme</li>
+                            <li>Qualität vs. Quantität</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="topic-box">
+                        <h4>3. Mineralstoffe</h4>
+                        <ul>
+                            <li>Elektrolyte und Schweißverluste</li>
+                            <li>Eisen, Magnesium, Calcium</li>
+                            <li>Mangelsymptome erkennen</li>
+                            <li>Bedarfsdeckung durch Ernährung</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="topic-box">
+                        <h4>4. Vitamine</h4>
+                        <ul>
+                            <li>Wasserlösliche vs. fettlösliche</li>
+                            <li>Antioxidantien im Sport</li>
+                            <li>Erhöhter Bedarf bei Sportlern</li>
+                            <li>Supplementierung vs. natürliche Quellen</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="topic-box">
+                        <h4>5. Wasserhaushalt, Getränke</h4>
+                        <ul>
+                            <li>Flüssigkeitsbedarf im Sport</li>
+                            <li>Optimale Sportgetränke</li>
+                            <li>Dehydration vermeiden</li>
+                            <li>Elektrolytersatz bei längerem Training</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Anhang -->
+            <div class="chapter">
+                <div class="chapter-title">Anhang</div>
+                
+                <div class="content-grid">
+                    <div class="topic-box">
+                        <h4>Literatur</h4>
+                        <ul>
+                            <li>Wissenschaftliche Quellen</li>
+                            <li>Weiterführende Literatur</li>
+                            <li>Aktuelle Forschungsergebnisse</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="topic-box">
+                        <h4>Register</h4>
+                        <ul>
+                            <li>Alphabetisches Stichwortverzeichnis</li>
+                            <li>Schnelle Orientierung</li>
+                            <li>Querverweise zwischen Themen</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Praktische Umsetzung -->
+        <div class="main-section">
+            <div class="section-title">🎯 Praktische Umsetzung im Schulalltag</div>
+            
+            <!-- Eingangsklasse -->
+            <div class="chapter">
+                <div class="chapter-title">Eingangsklasse - Gelenkfunktion</div>
+                <div class="content-grid">
+                    <div class="topic-box">
+                        <h4>Individualsportarten <span class="page-ref">BPE 1 - 23h</span></h4>
+                        <p><strong>Mindestens 2 Bereiche + Fitness:</strong></p>
+                        <ul>
+                            <li><strong>Laufen, Springen, Werfen:</strong> Leichtathletik-Grundlagen</li>
+                            <li><strong>Bewegen an Geräten:</strong> Gerätturnen</li>
+                            <li><strong>Bewegen im Wasser:</strong> Schwimmen</li>
+                            <li><strong>Tanzen, Gestalten, Darstellen:</strong> Gymnastik/Tanz</li>
+                            <li><strong>Fitness entwickeln:</strong> Vernetzt mit anderen Bereichen</li>
+                        </ul>
+                        <div class="emphasis">→ Praxis-Theorie-Kopplung Trainingslehre</div>
+                    </div>
+                    
+                    <div class="topic-box">
+                        <h4>Sportspiele <span class="page-ref">BPE 2 - 17h</span></h4>
+                        <p><strong>Mindestens 2 Spiele:</strong></p>
+                        <ul>
+                            <li><strong>Basketball:</strong> Technik und Taktik</li>
+                            <li><strong>Handball:</strong> Spiel- und Regelkenntnisse</li>
+                            <li><strong>Fußball:</strong> Grundfertigkeiten</li>
+                            <li><strong>Volleyball:</strong> Spielfähigkeit</li>
+                        </ul>
+                        <div class="emphasis">→ Spielstruktur verstehen und umgestalten</div>
+                    </div>
+                    
+                    <div class="topic-box">
+                        <h4>Erlebnis- und Trendsportarten <span class="page-ref">BPE 3 - 6h</span></h4>
+                        <ul>
+                            <li>Erlebnis- und Trendsportarten</li>
+                            <li>Sportarten mit regionalem Stellenwert</li>
+                            <li>Jugend trainiert für Olympia/Paralympics</li>
+                            <li>Vielfältige Erscheinungsformen des Sports</li>
+                        </ul>
+                        <div class="emphasis">→ Erweiterte sportliche Handlungskompetenz</div>
+                    </div>
+                    
+                    <div class="topic-box">
+                        <h4>Wissen <span class="page-ref">BPE 4 - 4h</span></h4>
+                        <ul>
+                            <li>Reflexion eigener Leistungsfähigkeit</li>
+                            <li>Praxis-Theorie-Projekt</li>
+                            <li>Individuelles Trainingsprogramm</li>
+                            <li>Trainingstagebuch dokumentieren</li>
+                        </ul>
+                        <div class="emphasis">→ Eingebunden in sportpraktischen Unterricht</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Jahrgangsstufen -->
+            <div class="chapter">
+                <div class="chapter-title">Jahrgangsstufen 1 & 2 - Vertiefung und Spezialisierung</div>
+                <div class="content-grid">
+                    <div class="topic-box">
+                        <h4>Individualsportarten <span class="page-ref">BPE 5 - 30h</span></h4>
+                        <p><strong>Mindestens 1 Bereich + Fitness:</strong></p>
+                        <ul>
+                            <li><strong>Leichtathletik:</strong> Sportartspezifische Vertiefung</li>
+                            <li><strong>Gerätturnen:</strong> Erweiterte Fertigkeiten</li>
+                            <li><strong>Schwimmen:</strong> Verschiedene Schwimmarten</li>
+                            <li><strong>Gymnastik/Tanz:</strong> Kreative Gestaltung</li>
+                            <li><strong>Fitness entwickeln:</strong> Eigenständige Trainingsprogramme</li>
+                        </ul>
+                        <div class="emphasis">→ Bewegungs- und Trainingslehre</div>
+                    </div>
+                    
+                    <div class="topic-box">
+                        <h4>Sportspiele <span class="page-ref">BPE 6 - 30h</span></h4>
+                        <p><strong>Mindestens 1 Spiel:</strong></p>
+                        <ul>
+                            <li><strong>Basketball:</strong> Erweiterte Technik und Taktik</li>
+                            <li><strong>Handball:</strong> Spielspezifische Kondition</li>
+                            <li><strong>Fußball:</strong> Komplexe Spielsituationen</li>
+                            <li><strong>Volleyball:</strong> Verfeinerte Fertigkeiten</li>
+                        </ul>
+                        <div class="emphasis">→ Pädagogische Perspektiven reflektieren</div>
+                    </div>
+                    
+                    <div class="topic-box">
+                        <h4>Erlebnis- und Trendsportarten <span class="page-ref">BPE 7 - 15h</span></h4>
+                        <ul>
+                            <li>Vertiefte Auseinandersetzung</li>
+                            <li>Erweiterte Körpererfahrung</li>
+                            <li>Neue Bewegungsformen</li>
+                            <li>Regionale Besonderheiten</li>
+                            <li>Wettkampfprogramm-Sportarten</li>
+                        </ul>
+                        <div class="emphasis">→ Vielfältige Erscheinungsformen erleben</div>
+                    </div>
+                    
+                    <div class="topic-box">
+                        <h4>Wissen <span class="page-ref">BPE 8 - 15h</span></h4>
+                        <p><strong>Drei Wissensbereiche:</strong></p>
+                        <ul>
+                            <li><strong>Eigenes sportliches Handeln:</strong> Trainingslehre, Bewegungslehre</li>
+                            <li><strong>Individuelles Handeln im sozialen Kontext:</strong> Fairness, Teamwork</li>
+                            <li><strong>Sport im gesellschaftlichen Kontext:</strong> Sportgeschichte, Sportökonomie</li>
+                        </ul>
+                        <div class="emphasis">→ Enge Praxis-Theorie-Verknüpfung</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Zusammenfassung -->
+        <div class="summary-box">
+            <h3>🎯 Sport als ganzheitliches Bildungskonzept</h3>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <h4>Doppelauftrag</h4>
+                    <p>Erziehung zum Sport (lebenslange Motivation) und durch Sport (Persönlichkeitsentwicklung)</p>
+                </div>
+                
+                <div class="summary-item">
+                    <h4>Mehrperspektivität</h4>
+                    <p>6 Sinnrichtungen ermöglichen individuelle Sinngebung für das Sporttreiben</p>
+                </div>
+                
+                <div class="summary-item">
+                    <h4>Gelenkfunktion Eingangsklasse</h4>
+                    <p>Ausgleich unterschiedlicher Lernvoraussetzungen und breite Grundlagenbildung</p>
+                </div>
+                
+                <div class="summary-item">
+                    <h4>Spezialisierung Jahrgangsstufen</h4>
+                    <p>Vertiefte Auseinandersetzung mit gewählten Sportarten und Kompetenzbereichen</p>
+                </div>
+                
+                <div class="summary-item">
+                    <h4>Praxis-Theorie-Verbindung</h4>
+                    <p>Sporttheoretische Kenntnisse in direkter Anbindung an die praktische Erfahrung</p>
+                </div>
+                
+                <div class="summary-item">
+                    <h4>Über den Unterricht hinaus</h4>
+                    <p>Sportarbeitsgemeinschaften, Wettbewerbe, Kooperation Schule-Verein</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Kernkompetenzen -->
+        <div class="summary-box">
+            <h3>💡 Kernkompetenzen Sport</h3>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <h4>Motorische Kompetenzen</h4>
+                    <p>Leistungsfähigkeit entwickeln, koordinative Fähigkeiten verbessern, Bewegungserfahrungen erweitern, Körperausdruck und Kreativität fördern</p>
+                </div>
+                
+                <div class="summary-item">
+                    <h4>Kognitive/Reflexive Kompetenzen</h4>
+                    <p>Gesundheitswissen entwickeln, Trainingssteuerung verstehen, kritische Reflexion des Sports, Selbstregulation fördern</p>
+                </div>
+                
+                <div class="summary-item">
+                    <h4>Soziale/Emotionale Kompetenzen</h4>
+                    <p>Freude an lebenslanger sportlicher Betätigung, selbstständige Kooperation, Fairness und Konfliktbewältigung, Umgang mit Emotionen</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Smooth scrolling für Navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Progressive loading animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const chapters = document.querySelectorAll('.chapter, .main-section');
+            chapters.forEach((chapter, index) => {
+                chapter.style.opacity = '0';
+                chapter.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    chapter.style.transition = 'all 0.6s ease';
+                    chapter.style.opacity = '1';
+                    chapter.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+        
+        // Hover effects für topic boxes
+        document.querySelectorAll('.topic-box').forEach(box => {
+            box.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px)';
+                this.style.boxShadow = '0 6px 20px rgba(52, 152, 219, 0.2)';
+            });
+            
+            box.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '';
+            });
+        });
+        
+        // Special effects für Sinnrichtungen und Kompetenzen
+        document.querySelectorAll('.sinnrichtung, .kompetenz').forEach(element => {
+            element.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05)';
+                this.style.transition = 'all 0.2s ease';
+            });
+            
+            element.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

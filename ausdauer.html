@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ausdauer - Kompetenzbereich</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 25%, #1abc9c 50%, #16a085 75%, #27ae60 100%);
+            min-height: 100vh;
+            color: #2c3e50;
+        }
+        
+        .container {
+            max-width: 1500px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .back-button {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            border: none;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+        
+        .title {
+            font-size: 48px;
+            font-weight: 700;
+            margin: 20px 0;
+            background: linear-gradient(45deg, #3498db, #1abc9c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 20px;
+            color: #34495e;
+            font-style: italic;
+        }
+        
+        .section {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            border-left: 5px solid #3498db;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-title {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .info-box {
+            background: rgba(52, 152, 219, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(52, 152, 219, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .info-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.2);
+            background: rgba(52, 152, 219, 0.15);
+        }
+        
+        .info-box h4 {
+            margin: 0 0 15px 0;
+            color: #2980b9;
+            font-size: 18px;
+        }
+        
+        .info-box ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        .info-box li {
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+        
+        .highlight {
+            background: rgba(241, 196, 15, 0.2);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #f39c12;
+        }
+        
+        .definition {
+            background: rgba(0, 0, 0, 0.05);
+            border-left: 4px solid #3498db;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .definition h4 {
+            margin: 0 0 10px 0;
+            color: #3498db;
+        }
+        
+        .exercise-box {
+            background: rgba(39, 174, 96, 0.1);
+            border: 1px solid rgba(39, 174, 96, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .exercise-box h5 {
+            margin: 0 0 10px 0;
+            color: #27ae60;
+            font-size: 16px;
+        }
+        
+        .formula {
+            background: rgba(44, 62, 80, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            border: 1px solid rgba(44, 62, 80, 0.2);
+        }
+        
+        .tabs {
+            display: flex;
+            background: rgba(52, 152, 219, 0.1);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .tab {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            background: transparent;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        
+        .tab.active {
+            background: rgba(52, 152, 219, 0.3);
+            color: #2980b9;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .interactive-element {
+            background: rgba(155, 89, 182, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px solid rgba(155, 89, 182, 0.3);
+            text-align: center;
+        }
+        
+        .button {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            border: none;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 5px;
+        }
+        
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+        
+        .arbeitsblatt {
+            background: rgba(39, 174, 96, 0.1);
+            border: 1px solid rgba(39, 174, 96, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .arbeitsblatt h5 {
+            margin: 0 0 8px 0;
+            color: #27ae60;
+            font-size: 16px;
+        }
+        
+        .hiit-box {
+            background: rgba(231, 76, 60, 0.1);
+            border: 2px solid rgba(231, 76, 60, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .hiit-box h4 {
+            margin: 0 0 15px 0;
+            color: #e74c3c;
+            font-size: 18px;
+        }
+        
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .title {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="index.html" class="back-button">← Zurück zur Übersicht</a>
+            <div class="title">🏃‍♂️ Ausdauer</div>
+            <div class="subtitle">Kompletter Lehrplaninhalt - Grundlagen, Training und Gesundheit</div>
+        </div>
+        
+        <!-- I. Sich fit fühlen -->
+        <div class="section">
+            <div class="section-title">I. Sich fit fühlen - Was ist Ausdauer?</div>
+            
+            <div class="definition">
+                <h4>Definition Ausdauer</h4>
+                <p>Ausdauer ist die Fähigkeit, eine sportliche Belastung über einen längeren Zeitraum aufrechtzuerhalten und der entstehenden Ermüdung zu widerstehen. Sie ist die Basis für körperliche Fitness und Gesundheit.</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="info-box">
+                    <h4>Subjektives Wohlbefinden</h4>
+                    <ul>
+                        <li>Körperliche Fitness erleben und spüren</li>
+                        <li>Persönliche Leistungsfähigkeit einschätzen</li>
+                        <li>Motivation für lebenslangen Sport entwickeln</li>
+                        <li>Gesundheitsbewusstsein stärken</li>
+                        <li>Positive Körperwahrnehmung fördern</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>Fitness-Komponenten</h4>
+                    <ul>
+                        <li><span class="highlight">Ausdauer:</span> Herz-Kreislauf-System</li>
+                        <li><span class="highlight">Kraft:</span> Muskuläre Leistungsfähigkeit</li>
+                        <li><span class="highlight">Beweglichkeit:</span> Flexibilität und Mobilität</li>
+                        <li><span class="highlight">Koordination:</span> Bewegungssteuerung</li>
+                        <li><span class="highlight">Schnelligkeit:</span> Reaktions- und Bewegungsgeschwindigkeit</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- II. Wie fit, wie gesund sind wir? -->
+        <div class="section">
+            <div class="section-title">II. Wie fit, wie gesund sind wir?</div>
+            
+            <div class="arbeitsblatt">
+                <h5>Arbeitsblatt I: Wie fit bin ich? (Deutscher Motorik-Test, DMT)</h5>
+                <p>Systematische Erfassung der motorischen Leistungsfähigkeit durch standardisierte Tests zur objektiven Einschätzung des Fitnessstandes.</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="info-box">
+                    <h4>Fitness-Diagnostik Tests</h4>
+                    <ul>
+                        <li><span class="highlight">Ausdauer:</span> 6-Minuten-Lauf, 20m-Shuttle-Run</li>
+                        <li><span class="highlight">Kraft:</span> Standweitsprung, Liegestütze</li>
+                        <li><span class="highlight">Schnelligkeit:</span> 20m-Sprint</li>
+                        <li><span class="highlight">Koordination:</span> Balancieren rückwärts</li>
+                        <li><span class="highlight">Beweglichkeit:</span> Rumpfbeuge vorwärts</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>Gesundheitsindikatoren</h4>
+                    <ul>
+                        <li><span class="highlight">BMI:</span> Body-Mass-Index und Körperkomposition</li>
+                        <li><span class="highlight">Herzfrequenz:</span> Ruhepuls und Belastungspuls</li>
+                        <li><span class="highlight">Blutdruck:</span> Systolisch und diastolisch</li>
+                        <li><span class="highlight">Stoffwechsel:</span> Blutzucker und Cholesterin</li>
+                        <li><span class="highlight">Subjektives Befinden:</span> Wohlbefinden und Vitalität</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- III. Allgemeine Gesetzmäßigkeiten des Trainings -->
+        <div class="section">
+            <div class="section-title">III. Allgemeine Gesetzmäßigkeiten des Trainings</div>
+            
+            <div class="content-grid">
+                <div class="info-box">
+                    <h4>1. Qualitätsgesetz (Physiologisches Gesetz)</h4>
+                    <p><strong>Prinzip der richtigen Belastungszusammensetzung</strong></p>
+                    <ul>
+                        <li><span class="highlight">Intensität:</span> Wie stark ist die Belastung?</li>
+                        <li><span class="highlight">Umfang:</span> Wie lange/viel wird belastet?</li>
+                        <li><span class="highlight">Dichte:</span> Verhältnis Belastung zu Pause</li>
+                        <li><span class="highlight">Häufigkeit:</span> Wie oft wird trainiert?</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>2. Homöostase, Superkompensation</h4>
+                    <p><strong>Prinzip der optimalen Relation von Belastung und Erholung</strong></p>
+                    <ul>
+                        <li><span class="highlight">Belastungsphase:</span> Energieverbrauch und Ermüdung</li>
+                        <li><span class="highlight">Ermüdungsphase:</span> Temporärer Leistungsabfall</li>
+                        <li><span class="highlight">Erholungsphase:</span> Regeneration der Systeme</li>
+                        <li><span class="highlight">Superkompensation:</span> Leistungssteigerung über Ausgangsniveau</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>3. Reizschwellengesetz</h4>
+                    <p><strong>Prinzip des trainingswirksamen Reizes</strong></p>
+                    <ul>
+                        <li><span class="highlight">Unterschwelliger Reiz:</span> Keine Anpassung</li>
+                        <li><span class="highlight">Schwellenreiz:</span> Gerade ausreichend für Anpassung</li>
+                        <li><span class="highlight">Optimaler Reiz:</span> Beste Trainingsanpassung</li>
+                        <li><span class="highlight">Überschwelliger Reiz:</span> Überforderung und Schädigung</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>4. Trainierbarkeit und Leistungsfähigkeit</h4>
+                    <ul>
+                        <li>Individuelle Unterschiede berücksichtigen</li>
+                        <li>Altersgerechte Trainingsgestaltung</li>
+                        <li>Geschlechtsspezifische Anpassungen</li>
+                        <li>Genetische Faktoren und Talente beachten</li>
+                        <li>Langfristige Trainingsplanung</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- IV. Ausdauer - Hauptteil -->
+        <div class="section">
+            <div class="section-title">IV. Ausdauer - Detaillierte Inhalte</div>
+            
+            <!-- 1. Lohnt sich Ausdauertraining? -->
+            <div class="content-grid">
+                <div class="info-box">
+                    <h4>1. Lohnt sich Ausdauertraining?</h4>
+                    <ul>
+                        <li><span class="highlight">Herz-Kreislauf:</span> Senkung des Infarktrisikos um 50%</li>
+                        <li><span class="highlight">Stoffwechsel:</span> Verbesserung der Insulinresistenz</li>
+                        <li><span class="highlight">Mental:</span> Reduktion von Stress und Depression</li>
+                        <li><span class="highlight">Immunsystem:</span> Stärkung der Abwehrkräfte</li>
+                        <li><span class="highlight">Lebenserwartung:</span> Erhöhung um 3-7 Jahre</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- 2. Energiebereitstellung -->
+            <div class="tabs">
+                <button class="tab active" onclick="showTab('energy1')">2.1 Leistungsbestimmende Faktoren</button>
+                <button class="tab" onclick="showTab('energy2')">2.2 Energiegewinnung</button>
+                <button class="tab" onclick="showTab('energy3')">2.3 Belastungsintensität</button>
+                <button class="tab" onclick="showTab('energy4')">2.4 Herz-Kreislauf-Anpassungen</button>
+            </div>
+            
+            <div id="energy1" class="tab-content active">
+                <div class="content-grid">
+                    <div class="info-box">
+                        <h4>2.1 Leistungsbestimmende Faktoren</h4>
+                        <ul>
+                            <li><span class="highlight">VO₂max:</span> Maximale Sauerstoffaufnahme (ml/min/kg)</li>
+                            <li><span class="highlight">Herzfrequenz:</span> Schläge pro Minute</li>
+                            <li><span class="highlight">Schlagvolumen:</span> Blutmenge pro Herzschlag</li>
+                            <li><span class="highlight">Herzzeitvolumen:</span> Blutmenge pro Minute</li>
+                            <li><span class="highlight">A-V-O₂-Differenz:</span> Sauerstoffausschöpfung</li>
+                        </ul>
+                        <div class="formula">
+                            VO₂max = HZV × A-V-O₂-Differenz<br>
+                            HZV = HF × SV<br>
+                            <small>(Herzzeitvolumen = Herzfrequenz × Schlagvolumen)</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="energy2" class="tab-content">
+                <div class="content-grid">
+                    <div class="info-box">
+                        <h4>2.2 Energiegewinnung in den Muskelzellen</h4>
+                        <ul>
+                            <li><span class="highlight">ATP-PC-System:</span> Sofortenergie (0-10 Sekunden)</li>
+                            <li><span class="highlight">Glykolyse:</span> Kurzzeitenergie (10 Sek. - 2 Min.)</li>
+                            <li><span class="highlight">Aerobe Energiegewinnung:</span> Langzeitenergie (ab 2 Min.)</li>
+                        </ul>
+                        <div class="formula">
+                            Glucose + O₂ → CO₂ + H₂O + 38 ATP (aerob)<br>
+                            Glucose → Laktat + 2 ATP (anaerob)
+                        </div>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4>Substrate der Energiegewinnung</h4>
+                        <ul>
+                            <li><span class="highlight">Kohlenhydrate:</span> Schnelle Energie, 4 kcal/g</li>
+                            <li><span class="highlight">Fette:</span> Langanhaltende Energie, 9 kcal/g</li>
+                            <li><span class="highlight">Proteine:</span> Bei Mangel an KH und Fett, 4 kcal/g</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="energy3" class="tab-content">
+                <div class="content-grid">
+                    <div class="info-box">
+                        <h4>2.3 Belastungsintensität und Schwellenwerte</h4>
+                        <ul>
+                            <li><span class="highlight">Aerobe Schwelle (AeS):</span> 65-75% HFmax, 2 mmol/l Laktat</li>
+                            <li><span class="highlight">Anaerobe Schwelle (AnS):</span> 80-90% HFmax, 4 mmol/l Laktat</li>
+                            <li><span class="highlight">Maximalbereich:</span> 90-100% HFmax, >4 mmol/l Laktat</li>
+                        </ul>
+                        <div class="formula">
+                            HFmax ≈ 220 - Lebensalter<br>
+                            <small>(Grobe Schätzformel für maximale Herzfrequenz)</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="energy4" class="tab-content">
+                <div class="content-grid">
+                    <div class="info-box">
+                        <h4>2.4 Anpassungen des Herz-Kreislaufsystems</h4>
+                        <ul>
+                            <li><span class="highlight">Herz:</span> Vergrößerung der Herzkammern</li>
+                            <li><span class="highlight">Herzmuskel:</span> Verdickung der Herzmuskulatur</li>
+                            <li><span class="highlight">Ruhepuls:</span> Senkung der Ruheherzfrequenz</li>
+                            <li><span class="highlight">Schlagvolumen:</span> Erhöhung des Schlagvolumens</li>
+                            <li><span class="highlight">Kapillarisierung:</span> Verbesserung der Durchblutung</li>
+                            <li><span class="highlight">Blutvolumen:</span> Erhöhung der Blutmenge</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 3. Ausdauerfähigkeiten für Gesundheit und Fitness -->
+        <div class="section">
+            <div class="section-title">3. Welche Ausdauerfähigkeiten sind für Gesundheit und Fitness wichtig?</div>
+            
+            <div class="content-grid">
+                <div class="info-box">
+                    <h4>3.1 Allgemeine aerobe Ausdauer</h4>
+                    <ul>
+                        <li>Grundlage aller Ausdauerfähigkeiten</li>
+                        <li>Wichtig für Gesundheit und Fitness</li>
+                        <li>Verbesserung der Sauerstoffaufnahme</li>
+                        <li>Stärkung des Herz-Kreislauf-Systems</li>
+                        <li>Fettverbrennung und Stoffwechsel</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>3.2 Grundlagenausdauer</h4>
+                    <ul>
+                        <li>Basis für sportartspezifische Ausdauer</li>
+                        <li>Lange, moderate Belastungen</li>
+                        <li>Verbesserung der Regeneration</li>
+                        <li>Erhöhung der Laktattoleranz</li>
+                        <li>Ökonomisierung der Bewegung</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>3.3 Anaerobe Ausdauer und spezielle Ausdauerfähigkeiten</h4>
+                    <ul>
+                        <li>Kurze, intensive Belastungen</li>
+                        <li>Ohne ausreichende Sauerstoffversorgung</li>
+                        <li>Wichtig für Schnellkraft-Ausdauer</li>
+                        <li>Laktatproduktion und -abbau</li>
+                        <li>Wettkampfspezifische Vorbereitung</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 4. Ausdauertraining -->
+        <div class="section">
+            <div class="section-title">4. Ausdauertraining - Methoden und Prinzipien</div>
+            
+            <div class="content-grid">
+                <div class="info-box">
+                    <h4>4.1 Ziele und Voraussetzungen</h4>
+                    <ul>
+                        <li>Verbesserung der kardiovaskulären Fitness</li>
+                        <li>Steigerung der Laktattoleranz</li>
+                        <li>Ökonomisierung der Bewegung</li>
+                        <li>Erhöhung der Fettverbrennung</li>
+                        <li>Verbesserung der Regenerationsfähigkeit</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>4.2 Dauermethoden</h4>
+                    <ul>
+                        <li><span class="highlight">Kontinuierliche Methode:</span> Gleichmäßige Belastung</li>
+                        <li><span class="highlight">Variable Methode:</span> Wechselnde Intensität</li>
+                        <li><span class="highlight">Dauer:</span> 30-120 Minuten</li>
+                        <li><span class="highlight">Intensität:</span> 60-80% HFmax</li>
+                        <li><span class="highlight">Beispiel:</span> Dauerlauf, Radfahren, Schwimmen</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>4.3 Intervallmethoden</h4>
+                    <ul>
+                        <li><span class="highlight">Extensives Intervalltraining:</span> Viele Wiederholungen, moderate Intensität</li>
+                        <li><span class="highlight">Intensives Intervalltraining:</span> Wenige Wiederholungen, hohe Intensität</li>
+                        <li><span class="highlight">HIIT:</span> Hochintensives Intervalltraining</li>
+                        <li><span class="highlight">Tabata-Methode:</span> 8 × 20 Sek. Vollgas + 10 Sek. Pause</li>
+                        <li>Belastung-Pause-Verhältnis optimal gestalten</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>4.4 Steuerung der Belastungsintensität</h4>
+                    <ul>
+                        <li><span class="highlight">Herzfrequenz:</span> Objektive Messung mit Pulsuhr</li>
+                        <li><span class="highlight">Atmung:</span> Subjektive Einschätzung</li>
+                        <li><span class="highlight">Laktatwerte:</span> Labordiagnostik</li>
+                        <li><span class="highlight">RPE-Skala:</span> Anstrengungsempfinden (6-20)</li>
+                        <li><span class="highlight">Talk-Test:</span> Sprechen während Belastung</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- HIIT-Spezial -->
+        <div class="section">
+            <div class="section-title">Hochintensives Intervalltraining (HIIT)</div>
+            
+            <div class="hiit-box">
+                <h4>🔥 Was ist HIIT?</h4>
+                <p>HIIT steht für High Intensity Interval Training und ist eine moderne Trainingsmethode, bei der sich kurze Belastungsphasen von meist 20-60 Sekunden mit kurzen aktiven Erholungsphasen von etwa 10-30 Sekunden mehrmals abwechseln.</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="info-box">
+                    <h4>Vorteile von HIIT</h4>
+                    <ul>
+                        <li><span class="highlight">Zeiteffizienz:</span> 10-20 Minuten statt 45-90 Minuten</li>
+                        <li><span class="highlight">Nachbrenneffekt:</span> Erhöhter Kalorienverbrauch nach Training</li>
+                        <li><span class="highlight">VO₂max:</span> Schnelle Verbesserung der Ausdauer</li>
+                        <li><span class="highlight">Fettverbrennung:</span> Effektive Reduktion von Körperfett</li>
+                        <li><span class="highlight">Flexibilität:</span> Überall und ohne Geräte durchführbar</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>HIIT-Protokolle</h4>
+                    <ul>
+                        <li><span class="highlight">Tabata:</span> 8 × 20 Sek. Vollgas + 10 Sek. Pause (4 Min.)</li>
+                        <li><span class="highlight">Little-Methode:</span> 12 × 60 Sek. + 75 Sek. Pause (27 Min.)</li>
+                        <li><span class="highlight">Klassisch:</span> 6-8 × 30 Sek. + 90 Sek. Pause</li>
+                        <li><span class="highlight">Pyramid:</span> Steigerung und Reduzierung der Intervalle</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>HIIT-Übungen</h4>
+                    <ul>
+                        <li><span class="highlight">Cardio:</span> Burpees, Jumping Jacks, Mountain Climbers</li>
+                        <li><span class="highlight">Kraft:</span> Squats, Push-ups, Lunges</li>
+                        <li><span class="highlight">Geräte:</span> Rudergerät, Fahrrad, Laufband</li>
+                        <li><span class="highlight">Outdoor:</span> Sprints, Treppenläufe, Seilspringen</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>Vorsichtsmaßnahmen</h4>
+                    <ul>
+                        <li><span class="highlight">Aufwärmen:</span> 10 Minuten vor jeder HIIT-Einheit</li>
+                        <li><span class="highlight">Häufigkeit:</span> Maximal 2-3x pro Woche</li>
+                        <li><span class="highlight">Progression:</span> Langsame Steigerung der Intensität</li>
+                        <li><span class="highlight">Regeneration:</span> 48h Pause zwischen Einheiten</li>
+                        <li><span class="highlight">Medizincheck:</span> Bei Vorerkrankungen ärztliche Abklärung</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 5. Überprüfung der Ausdauer -->
+        <div class="section">
+            <div class="section-title">5. Überprüfung der Ausdauer und des Ausdauertrainings</div>
+            
+            <div class="content-grid">
+                <div class="info-box">
+                    <h4>Leistungsdiagnostik</h4>
+                    <ul>
+                        <li><span class="highlight">Cooper-Test:</span> 12-Minuten-Lauf</li>
+                        <li><span class="highlight">Conconi-Test:</span> Stufentest mit HF-Messung</li>
+                        <li><span class="highlight">PWC170-Test:</span> Physical Working Capacity</li>
+                        <li><span class="highlight">Laktatstufentest:</span> Schwellenbestimmung</li>
+                        <li><span class="highlight">Spiroergometrie:</span> Atemgasanalyse</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>Alltagstaugliche Tests</h4>
+                    <ul>
+                        <li><span class="highlight">Ruhepuls:</span> Morgendliche Messung im Bett</li>
+                        <li><span class="highlight">Erholungspuls:</span> Nach 1-2 Minuten Pause</li>
+                        <li><span class="highlight">Belastungspuls:</span> Während des Trainings</li>
+                        <li><span class="highlight">Talk-Test:</span> Sprechen während Belastung</li>
+                        <li><span class="highlight">Subjektives Empfinden:</span> RPE-Skala</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 6. Tipps zum Ausdauertraining -->
+        <div class="section">
+            <div class="section-title">6. Tipps zum Ausdauertraining</div>
+            
+            <div class="exercise-box">
+                <h5>🎯 Trainingsplanung</h5>
+                <ul>
+                    <li><strong>Aufwärmen:</strong> 10-15 Minuten lockeres Einlaufen</li>
+                    <li><strong>Hauptteil:</strong> Je nach Trainingsziel und Methode</li>
+                    <li><strong>Cool-Down:</strong> 10 Minuten langsames Auslaufen</li>
+                    <li><strong>Stretching:</strong> Dehnung der beanspruchten Muskulatur</li>
+                </ul>
+            </div>
+            
+            <div class="content-grid">
+                <div class="info-box">
+                    <h4>Praktische Übungen</h4>
+                    <ul>
+                        <li><span class="highlight">Intervallläufe:</span> 4 × 4 Min. bei 85-90% HFmax</li>
+                        <li><span class="highlight">Tempodauerlauf:</span> 20-40 Min. bei 80-85% HFmax</li>
+                        <li><span class="highlight">Grundlagenausdauer:</span> 45-90 Min. bei 70-75% HFmax</li>
+                        <li><span class="highlight">Regenerationslauf:</span> 20-30 Min. bei 60-65% HFmax</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>Trainingshäufigkeit</h4>
+                    <ul>
+                        <li><span class="highlight">Anfänger:</span> 2-3x pro Woche, 20-30 Min.</li>
+                        <li><span class="highlight">Fortgeschrittene:</span> 3-4x pro Woche, 30-60 Min.</li>
+                        <li><span class="highlight">Leistungssport:</span> 5-6x pro Woche, 60-120 Min.</li>
+                        <li><span class="highlight">Regeneration:</span> 1-2 Ruhetage pro Woche</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Arbeitsblätter -->
+        <div class="section">
+            <div class="section-title">📋 Arbeitsblätter und praktische Anwendung</div>
+            
+            <div class="content-grid">
+                <div class="arbeitsblatt">
+                    <h5>Arbeitsblatt II: Herzfrequenz als Messgröße</h5>
+                    <p><strong>Ziel:</strong> Praktische Anwendung der Herzfrequenz zur Trainingssteuerung</p>
+                    <ul>
+                        <li>Messung in verschiedenen Belastungssituationen</li>
+                        <li>Bestimmung der individuellen Trainingsbereiche</li>
+                        <li>Erstellung eines persönlichen Trainingsplans</li>
+                        <li>Dokumentation der Fortschritte im Trainingstagebuch</li>
+                    </ul>
+                </div>
+                
+                <div class="arbeitsblatt">
+                    <h5>Arbeitsblatt III: Energiebereitstellung und Belastungsintensität</h5>
+                    <p><strong>Ziel:</strong> Analyse der Energiesysteme in Abhängigkeit von der Belastungsdauer</p>
+                    <ul>
+                        <li>Zuordnung von Belastungsdauer zu Energiesystemen</li>
+                        <li>Verstehen der Laktatbildung und -elimination</li>
+                        <li>Praktische Erprobung verschiedener Trainingsintensitäten</li>
+                        <li>Bewertung der subjektiven Belastungsempfindung</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Interaktives Element -->
+        <div class="interactive-element">
+            <h4>💡 Erweiterte Trainingszonen-Berechnung</h4>
+            <p>Berechne deine optimalen Trainingsbereiche und erhalte einen personalisierten Trainingsplan:</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin: 20px 0;">
+                <input type="number" id="age" placeholder="Dein Alter" style="padding: 10px; border-radius: 5px; border: none;">
+                <input type="number" id="resting-hr" placeholder="Ruhepuls" style="padding: 10px; border-radius: 5px; border: none;">
+                <select id="fitness-level" style="padding: 10px; border-radius: 5px; border: none;">
+                    <option value="">Fitnesslevel wählen</option>
+                    <option value="beginner">Anfänger</option>
+                    <option value="intermediate">Fortgeschritten</option>
+                    <option value="advanced">Leistungssportler</option>
+                </select>
+                <select id="training-goal" style="padding: 10px; border-radius: 5px; border: none;">
+                    <option value="">Trainingsziel</option>
+                    <option value="health">Gesundheit</option>
+                    <option value="fat-loss">Fettabbau</option>
+                    <option value="performance">Leistung</option>
+                </select>
+            </div>
+            <button class="button" onclick="calculateTrainingZones()">Trainingsplan erstellen</button>
+            <div id="training-result" style="margin-top: 20px; font-weight: 600;"></div>
+        </div>
+        
+        <!-- Zusammenfassung -->
+        <div class="section">
+            <div class="section-title">🎯 Zusammenfassung: Ausdauer als Schlüssel zur Fitness</div>
+            
+            <div class="content-grid">
+                <div class="info-box">
+                    <h4>Gesundheitliche Bedeutung</h4>
+                    <ul>
+                        <li>Prävention von Herz-Kreislauf-Erkrankungen</li>
+                        <li>Verbesserung der Lebensqualität</li>
+                        <li>Stärkung des Immunsystems</li>
+                        <li>Positive Auswirkungen auf die Psyche</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>Trainingsmethodische Grundsätze</h4>
+                    <ul>
+                        <li>Progressive Belastungssteigerung</li>
+                        <li>Individualität berücksichtigen</li>
+                        <li>Abwechslung in der Trainingsgestaltung</li>
+                        <li>Regeneration als Trainingsbestandteil</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>Praktische Umsetzung</h4>
+                    <ul>
+                        <li>Regelmäßigkeit vor Intensität</li>
+                        <li>Spaß und Motivation aufrechterhalten</li>
+                        <li>Realistische Ziele setzen</li>
+                        <li>Langfristige Perspektive entwickeln</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function showTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab content
+            document.getElementById(tabId).classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+        
+        function calculateTrainingZones() {
+            const age = parseInt(document.getElementById('age').value);
+            const restingHR = parseInt(document.getElementById('resting-hr').value);
+            const fitnessLevel = document.getElementById('fitness-level').value;
+            const trainingGoal = document.getElementById('training-goal').value;
+            
+            if (!age || !restingHR || !fitnessLevel || !trainingGoal || age < 10 || age > 100 || restingHR < 40 || restingHR > 100) {
+                document.getElementById('training-result').innerHTML = '<p style="color: #e74c3c;">Bitte fülle alle Felder korrekt aus (Alter: 10-100, Ruhepuls: 40-100).</p>';
+                return;
+            }
+            
+            // Calculate max HR using Karvonen method
+            const maxHR = 220 - age;
+            const hrReserve = maxHR - restingHR;
+            
+            // Calculate training zones using Karvonen formula
+            const zone1 = {
+                name: "Regeneration",
+                min: Math.round(restingHR + (hrReserve * 0.5)),
+                max: Math.round(restingHR + (hrReserve * 0.6)),
+                purpose: "Aktive Erholung, Fettstoffwechsel"
+            };
+            
+            const zone2 = {
+                name: "Grundlagenausdauer 1",
+                min: Math.round(restingHR + (hrReserve * 0.6)),
+                max: Math.round(restingHR + (hrReserve * 0.7)),
+                purpose: "Aerobe Basis, Fettverbrennung"
+            };
+            
+            const zone3 = {
+                name: "Grundlagenausdauer 2",
+                min: Math.round(restingHR + (hrReserve * 0.7)),
+                max: Math.round(restingHR + (hrReserve * 0.8)),
+                purpose: "Aerobe Leistung, Ausdauer"
+            };
+            
+            const zone4 = {
+                name: "Schwellenbereich",
+                min: Math.round(restingHR + (hrReserve * 0.8)),
+                max: Math.round(restingHR + (hrReserve * 0.9)),
+                purpose: "Anaerobe Schwelle, Laktattoleranz"
+            };
+            
+            const zone5 = {
+                name: "Maximaler Bereich",
+                min: Math.round(restingHR + (hrReserve * 0.9)),
+                max: maxHR,
+                purpose: "VO₂max, maximale Leistung"
+            };
+            
+            // Training recommendations based on level and goal
+            let weeklyPlan = "";
+            if (fitnessLevel === "beginner") {
+                weeklyPlan = `
+                    <strong>Wochenplan für Anfänger:</strong><br>
+                    • 3x Zone 1-2: 20-30 Minuten<br>
+                    • 1x Zone 3: 15-20 Minuten<br>
+                    • 2 Ruhetage
+                `;
+            } else if (fitnessLevel === "intermediate") {
+                weeklyPlan = `
+                    <strong>Wochenplan für Fortgeschrittene:</strong><br>
+                    • 2x Zone 2: 45-60 Minuten<br>
+                    • 2x Zone 3: 30-40 Minuten<br>
+                    • 1x Zone 4: 20-30 Minuten<br>
+                    • 1 Ruhetag
+                `;
+            } else {
+                weeklyPlan = `
+                    <strong>Wochenplan für Leistungssportler:</strong><br>
+                    • 3x Zone 2: 60-90 Minuten<br>
+                    • 2x Zone 3: 45-60 Minuten<br>
+                    • 2x Zone 4-5: 30-45 Minuten<br>
+                    • 1 aktive Regeneration
+                `;
+            }
+            
+            // Goal-specific adjustments
+            let goalAdvice = "";
+            if (trainingGoal === "health") {
+                goalAdvice = "Fokus auf Zone 1-2 für Gesundheit und Wohlbefinden.";
+            } else if (trainingGoal === "fat-loss") {
+                goalAdvice = "Hauptsächlich Zone 2-3 für optimale Fettverbrennung.";
+            } else {
+                goalAdvice = "Alle Zonen trainieren für maximale Leistungssteigerung.";
+            }
+            
+            document.getElementById('training-result').innerHTML = `
+                <div style="text-align: left; max-width: 800px; margin: 0 auto;">
+                    <h4>Deine personalisierten Trainingszonen:</h4>
+                    
+                    <div style="background: rgba(0,0,0,0.05); padding: 15px; border-radius: 8px; margin: 10px 0;">
+                        <strong>Maximalpuls:</strong> ${maxHR} S/min | <strong>Ruhepuls:</strong> ${restingHR} S/min | <strong>HF-Reserve:</strong> ${hrReserve} S/min
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin: 15px 0;">
+                        <div style="background: rgba(46,204,113,0.2); padding: 10px; border-radius: 6px; text-align: center;">
+                            <strong>${zone1.name}</strong><br>
+                            ${zone1.min}-${zone1.max} S/min<br>
+                            <small>${zone1.purpose}</small>
+                        </div>
+                        
+                        <div style="background: rgba(52,152,219,0.2); padding: 10px; border-radius: 6px; text-align: center;">
+                            <strong>${zone2.name}</strong><br>
+                            ${zone2.min}-${zone2.max} S/min<br>
+                            <small>${zone2.purpose}</small>
+                        </div>
+                        
+                        <div style="background: rgba(243,156,18,0.2); padding: 10px; border-radius: 6px; text-align: center;">
+                            <strong>${zone3.name}</strong><br>
+                            ${zone3.min}-${zone3.max} S/min<br>
+                            <small>${zone3.purpose}</small>
+                        </div>
+                        
+                        <div style="background: rgba(230,126,34,0.2); padding: 10px; border-radius: 6px; text-align: center;">
+                            <strong>${zone4.name}</strong><br>
+                            ${zone4.min}-${zone4.max} S/min<br>
+                            <small>${zone4.purpose}</small>
+                        </div>
+                        
+                        <div style="background: rgba(231,76,60,0.2); padding: 10px; border-radius: 6px; text-align: center;">
+                            <strong>${zone5.name}</strong><br>
+                            ${zone5.min}-${zone5.max} S/min<br>
+                            <small>${zone5.purpose}</small>
+                        </div>
+                    </div>
+                    
+                    <div style="background: rgba(155,89,182,0.1); padding: 15px; border-radius: 8px; margin: 15px 0;">
+                        ${weeklyPlan}
+                    </div>
+                    
+                    <div style="background: rgba(39,174,96,0.1); padding: 15px; border-radius: 8px; margin: 15px 0;">
+                        <strong>Dein Trainingsziel:</strong> ${goalAdvice}
+                    </div>
+                    
+                    <div style="background: rgba(52,152,219,0.1); padding: 15px; border-radius: 8px; margin: 15px 0;">
+                        <strong>💡 Wichtige Tipps:</strong><br>
+                        • Beginne jedes Training mit 10 Min. Aufwärmen<br>
+                        • Achte auf eine gleichmäßige Atmung<br>
+                        • Höre auf deinen Körper und pausiere bei Überanstrengung<br>
+                        • Steigere die Belastung langsam und progressiv<br>
+                        • Trinke ausreichend vor, während und nach dem Training
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Animation on load
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach((section, index) => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(30px)';
+                setTimeout(() => {
+                    section.style.transition = 'all 0.6s ease';
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>

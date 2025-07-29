@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ernährung & Sport - Kompetenzbereich</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 25%, #f39c12 50%, #e67e22 75%, #d35400 100%);
+            min-height: 100vh;
+            color: #2c3e50;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .back-button {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            border: none;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(243, 156, 18, 0.4);
+        }
+        
+        .title {
+            font-size: 48px;
+            font-weight: 700;
+            margin: 20px 0;
+            background: linear-gradient(45deg, #f39c12, #d35400);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 20px;
+            color: #34495e;
+            font-style: italic;
+        }
+        
+        .section {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            border-left: 5px solid #f39c12;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-title {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            border-bottom: 3px solid #f39c12;
+            padding-bottom: 10px;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .info-box {
+            background: rgba(243, 156, 18, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(243, 156, 18, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .info-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(243, 156, 18, 0.2);
+            background: rgba(243, 156, 18, 0.15);
+        }
+        
+        .info-box h4 {
+            margin: 0 0 15px 0;
+            color: #f39c12;
+            font-size: 18px;
+        }
+        
+        .info-box ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        .info-box li {
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+        
+        .highlight {
+            background: rgba(241, 196, 15, 0.3);
+            padding: 4px 8px;
+            border-radius: 4px;
+            color: #f1c40f;
+            font-weight: 600;
+        }
+        
+        .nutrient {
+            background: rgba(230, 126, 34, 0.2);
+            border-radius: 8px;
+            padding: 3px 8px;
+            font-size: 11px;
+            color: #e67e22;
+            font-weight: 600;
+            margin: 2px;
+            display: inline-block;
+        }
+        
+        .definition {
+            background: rgba(0, 0, 0, 0.05);
+            border-left: 4px solid #f39c12;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .definition h4 {
+            margin: 0 0 10px 0;
+            color: #f39c12;
+        }
+        
+        .timing-box {
+            background: rgba(155, 89, 182, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px solid rgba(155, 89, 182, 0.3);
+        }
+        
+        .timing-box h4 {
+            margin: 0 0 15px 0;
+            color: #9b59b6;
+            font-size: 18px;
+        }
+        
+        .hydration-box {
+            background: rgba(52, 152, 219, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px solid rgba(52, 152, 219, 0.3);
+        }
+        
+        .hydration-box h4 {
+            margin: 0 0 15px 0;
+            color: #3498db;
+            font-size: 18px;
+        }
+        
+        .formula {
+            background: rgba(44, 62, 80, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            border: 1px solid rgba(44, 62, 80, 0.2);
+        }
+        
+        .interactive-element {
+            background: rgba(155, 89, 182, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px solid rgba(155, 89, 182, 0.3);
+            text-align: center;
+        }
+        
+        .button {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            border: none;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 5px;
+        }
+        
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(243, 156, 18, 0.4);
+        }
+        
+        .tabs {
+            display: flex;
+            background: rgba(243, 156, 18, 0.1);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .tab {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            background: transparent;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        
+        .tab.active {
+            background: rgba(243, 156, 18, 0.3);
+            color: #e67e22;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .food-pyramid {
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .pyramid-level {
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+        
+        .level-1 { background: rgba(39, 174, 96, 0.3); }
+        .level-2 { background: rgba(241, 196, 15, 0.3); }
+        .level-3 { background: rgba(230, 126, 34, 0.3); }
+        .level-4 { background: rgba(231, 76, 60, 0.3); }
+        
+        .warning-box {
+            background: rgba(231, 76, 60, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px solid rgba(231, 76, 60, 0.3);
+        }
+        
+        .warning-box h4 {
+            margin: 0 0 15px 0;
+            color: #e74c3c;
+            font-size: 18px;
+        }
+        
+        .exercise-box {
+            background: rgba(39, 174, 96, 0.1);
+            border: 1px solid rgba(39, 174, 96, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .exercise-box h5 {
+            margin: 0 0 10px 0;
+            color: #27ae60;
+            font-size: 16px;
+        }
+        
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .title {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="index.html" class="back-button">← Zurück zur Übersicht</a>
+            <div class="title">🥗 Ernährung & Sport</div>
+            <div class="subtitle">Optimale Nährstoffversorgung für Sportler</div>
+        </div>
+        
+        <!-- Energiebedarf -->
+        <div class="section">
+            <div class="section-title">1. Energiebedarf im Sport</div>
+            
+            <div class="definition">
+                <h4>Energiebedarf = Grundumsatz + Leistungsumsatz</h4>
+                <p>Der Energiebedarf setzt sich aus dem Grundumsatz (basaler Metabolismus für lebenswichtige Funktionen) und dem Leistungsumsatz (körperliche Aktivität, Verdauung, Thermogenese) zusammen.</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="info-box">
+                    <h4>Grundumsatz (BMR - Basal Metabolic Rate)</h4>
+                    <div class="formula">
+                        Männer: BMR = 88.362 + (13.397 × kg) + (4.799 × cm) - (5.677 × Jahre)<br>
+                        Frauen: BMR = 447.593 + (9.247 × kg) + (3.098 × cm) - (4.330 × Jahre)
+                    </div>
+                    <ul>
+                        <li>Energie für lebensnotwendige Funktionen</li>
+                        <li>60-70% des Gesamtenergieverbrauchs</li>
+                        <li>Abhängig von Alter, Geschlecht, Körperzusammensetzung</li>
+                        <li>Höher bei mehr Muskelmasse</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>Leistungsumsatz - Aktivitätsfaktoren (PAL)</h4>
+                    <ul>
+                        <li><span class="highlight">Sitzend/wenig aktiv:</span> BMR × 1.2-1.3</li>
+                        <li><span class="highlight">Leicht aktiv:</span> BMR × 1.4-1.5</li>
+                        <li><span class="highlight">Mäßig aktiv:</span> BMR × 1.6-1.7</li>
+                        <li><span class="highlight">Sehr aktiv:</span> BMR × 1.8-1.9</li>
+                        <li><span class="highlight">Extrem aktiv:</span> BMR × 2.0-2.4</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>Sportartspezifischer Energieverbrauch</h4>
+                    <ul>
+                        <li><span class="highlight">Ausdauersport:</span> 400-800 kcal/h (Laufen, Radfahren)</li>
+                        <li><span class="highlight">Krafttraining:</span> 200-400 kcal/h</li>
+                        <li><span class="highlight">Spielsportarten:</span> 300-600 kcal/h (Fußball, Basketball)</li>
+                        <li><span class="highlight">High-Intensity:</span> 600-1000 kcal/h (HIIT, Crossfit)</li>
+                        <li><span class="highlight">Schwimmen:</span> 400-700 kcal/h</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Makronährstoffe -->
+        <div class="section">
+            <div class="section-title">2. Kohlenhydrate, Proteine und Fette</div>
+            
+            <div class="tabs">
+                <button class="tab active" onclick="showTab('carbs')">Kohlenhydrate</button>
+                <button class="tab" onclick="showTab('proteins')">Proteine</button>
+                <button class="tab" onclick="showTab('fats')">Fette</button>
+            </div>
+            
+            <div id="carbs" class="tab-content active">
+                <div class="content-grid">
+                    <div class="info-box">
+                        <h4>Kohlenhydrate - Der Hauptenergieträger</h4>
+                        <div class="nutrient">Energielieferant</div>
+                        <ul>
+                            <li><span class="highlight">Funktion:</span> Primärer Energielieferant für Muskel und Gehirn</li>
+                            <li><span class="highlight">Energiewert:</span> 4 kcal/g</li>
+                            <li><span class="highlight">Speicherform:</span> Glykogen in Muskel und Leber (ca. 500g)</li>
+                            <li><span class="highlight">Sportlerbedarf:</span> 5-12 g/kg Körpergewicht/Tag</li>
+                            <li><span class="highlight">Intensitätsabhängig:</span> Je höher die Intensität, desto wichtiger</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4>Kohlenhydrattypen für Sportler</h4>
+                        <ul>
+                            <li><span class="highlight">Einfachzucker:</span> Schnelle Energie (Banane, Honig)</li>
+                            <li><span class="highlight">Zweifachzucker:</span> Mittlere Geschwindigkeit (Haushaltszucker)</li>
+                            <li><span class="highlight">Komplexe KH:</span> Langanhaltende Energie (Vollkorn, Haferflocken)</li>
+                            <li><span class="highlight">Glykämischer Index:</span> Niedrig vor Training, hoch danach</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4>Kohlenhydratbedarf nach Trainingsintensität</h4>
+                        <ul>
+                            <li><span class="highlight">Regeneration/leicht:</span> 3-5 g/kg KG</li>
+                            <li><span class="highlight">Moderat (1h/Tag):</span> 5-7 g/kg KG</li>
+                            <li><span class="highlight">Intensiv (1-3h/Tag):</span> 6-10 g/kg KG</li>
+                            <li><span class="highlight">Extrem (>4h/Tag):</span> 8-12 g/kg KG</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="proteins" class="tab-content">
+                <div class="content-grid">
+                    <div class="info-box">
+                        <h4>Proteine - Bausteine des Körpers</h4>
+                        <div class="nutrient">Baustoff</div>
+                        <ul>
+                            <li><span class="highlight">Funktion:</span> Muskelaufbau, -reparatur, Enzym- und Hormonproduktion</li>
+                            <li><span class="highlight">Energiewert:</span> 4 kcal/g (sekundärer Energielieferant)</li>
+                            <li><span class="highlight">Bedarf Normalbevölkerung:</span> 0.8 g/kg KG</li>
+                            <li><span class="highlight">Sportlerbedarf:</span> 1.2-2.0 g/kg KG/Tag</li>
+                            <li><span class="highlight">Timing:</span> Gleichmäßige Verteilung über den Tag optimal</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4>Proteinbedarf nach Sportart</h4>
+                        <ul>
+                            <li><span class="highlight">Ausdauersport:</span> 1.2-1.4 g/kg KG</li>
+                            <li><span class="highlight">Kraftsport:</span> 1.6-2.2 g/kg KG</li>
+                            <li><span class="highlight">Spielsportarten:</span> 1.4-1.7 g/kg KG</li>
+                            <li><span class="highlight">Gewichtsreduktion:</span> 1.8-2.7 g/kg KG</li>
+                            <li><span class="highlight">Maximaler Nutzen:</span> Etwa 2.2 g/kg KG</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4>Biologische Wertigkeit und Aminosäuren</h4>
+                        <ul>
+                            <li><span class="highlight">Vollständige Proteine:</span> Alle essentiellen Aminosäuren</li>
+                            <li><span class="highlight">Leucin:</span> Wichtigste Aminosäure für Muskelaufbau</li>
+                            <li><span class="highlight">BCAA:</span> Leucin, Isoleucin, Valin (verzweigtkettige AS)</li>
+                            <li><span class="highlight">Tierische Quellen:</span> Hohe biologische Wertigkeit</li>
+                            <li><span class="highlight">Pflanzliche Kombination:</span> Hülsenfrüchte + Getreide</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="fats" class="tab-content">
+                <div class="content-grid">
+                    <div class="info-box">
+                        <h4>Fette - Konzentrierte Energie</h4>
+                        <div class="nutrient">Energiespeicher</div>
+                        <ul>
+                            <li><span class="highlight">Funktion:</span> Energiespeicher, Hormonproduktion, Vitaminaufnahme</li>
+                            <li><span class="highlight">Energiewert:</span> 9 kcal/g (höchste Energiedichte)</li>
+                            <li><span class="highlight">Anteil am Gesamtkalorienverbrauch:</span> 20-35%</li>
+                            <li><span class="highlight">Mindestbedarf:</span> 0.5-1 g/kg KG für Hormonproduktion</li>
+                            <li><span class="highlight">Ausdauersport:</span> Wichtiger bei langen, moderaten Belastungen</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4>Fettqualität für Sportler</h4>
+                        <ul>
+                            <li><span class="highlight">Gesättigte Fette:</span> <10% der Gesamtkalorien</li>
+                            <li><span class="highlight">Einfach ungesättigte:</span> Olivenöl, Nüsse, Avocado</li>
+                            <li><span class="highlight">Omega-3-Fettsäuren:</span> Entzündungshemmend, Regeneration</li>
+                            <li><span class="highlight">Transfette:</span> Meiden (gehärtete Fette)</li>
+                            <li><span class="highlight">Timing:</span> Weniger direkt vor/nach Training</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4>Fettstoffwechsel im Sport</h4>
+                        <ul>
+                            <li><span class="highlight">Aerober Bereich:</span> Hauptenergielieferant bei niedriger Intensität</li>
+                            <li><span class="highlight">Fettadaptation:</span> Training des Fettstoffwechsels</li>
+                            <li><span class="highlight">Glykogen sparen:</span> Fettverbrennung schont Kohlenhydratspeicher</li>
+                            <li><span class="highlight">Langstrecken:</span> Besonders wichtig bei Belastungen >2h</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mikronährstoffe -->
+        <div class="section">
+            <div class="section-title">3. Mineralstoffe</div>
+            
+            <div class="content-grid">
+                <div class="info-box">
+                    <h4>Wichtige Mineralstoffe für Sportler</h4>
+                    <ul>
+                        <li><span class="highlight">Eisen:</span> Sauerstofftransport, Energiestoffwechsel (♀ 15mg, ♂ 10mg/Tag)</li>
+                        <li><span class="highlight">Magnesium:</span> Muskelkontraktion, Energiebereitstellung (300-400mg/Tag)</li>
+                        <li><span class="highlight">Calcium:</span> Knochengesundheit, Muskelkontraktion (1000mg/Tag)</li>
+                        <li><span class="highlight">Zink:</span> Immunsystem, Wundheilung, Proteinaufbau (7-10mg/Tag)</li>
+                        <li><span class="highlight">Natrium:</span> Flüssigkeitshaushalt, Nervenleitung</li>
+                        <li><span class="highlight">Kalium:</span> Muskel- und Nervenfunktion (4000mg/Tag)</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>Erhöhter Bedarf bei Sportlern</h4>
+                    <ul>
+                        <li>Oxidativer Stress durch intensives Training</li>
+                        <li>Verluste durch Schweiß (besonders Elektrolyte)</li>
+                        <li>Erhöhter Energieumsatz und Stoffwechsel</li>
+                        <li>Gesteigerte Protein- und Muskelreparatur</li>
+                        <li>Häufig unausgewogene oder einseitige Ernährung</li>
+                        <li>Erhöhte Zellteilung und Gewebereparatur</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>Mangelerscheinungen erkennen</h4>
+                    <ul>
+                        <li><span class="highlight">Eisenmangel:</span> Müdigkeit, verminderte Leistung, blasse Haut</li>
+                        <li><span class="highlight">Magnesiummangel:</span> Muskelkrämpfe, Herzrhythmusstörungen</li>
+                        <li><span class="highlight">Calciummangel:</span> Knochenprobleme, Muskelzuckungen</li>
+                        <li><span class="highlight">Zinkmangel:</span> Häufige Infekte, schlechte Wundheilung</li>
+                        <li><span class="highlight">Natriummangel:</span> Hyponatriämie, Übelkeit, Verwirrtheit</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Vitamine -->
+        <div class="section">
+            <div class="section-title">4. Vitamine</div>
+            
+            <div class="content-grid">
+                <div class="info-box">
+                    <h4>Wasserlösliche Vitamine</h4>
+                    <ul>
+                        <li><span class="highlight">Vitamin B1 (Thiamin):</span> Kohlenhydratstoffwechsel, Nervensystem</li>
+                        <li><span class="highlight">Vitamin B2 (Riboflavin):</span> Energiegewinnung, Zellatmung</li>
+                        <li><span class="highlight">Vitamin B6:</span> Proteinstoffwechsel, Neurotransmitter</li>
+                        <li><span class="highlight">Vitamin B12:</span> Blutbildung, Nervensystem (kritisch bei Veganern)</li>
+                        <li><span class="highlight">Vitamin C:</span> Immunsystem, Kollagenaufbau, Antioxidans</li>
+                        <li><span class="highlight">Folsäure:</span> Zellteilung, DNA-Synthese</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>Fettlösliche Vitamine</h4>
+                    <ul>
+                        <li><span class="highlight">Vitamin A:</span> Sehkraft, Immunsystem, Zelldifferenzierung</li>
+                        <li><span class="highlight">Vitamin D:</span> Knochenaufbau, Muskelfunktion, Immunsystem</li>
+                        <li><span class="highlight">Vitamin E:</span> Antioxidans, Zellschutz, Membranstabilität</li>
+                        <li><span class="highlight">Vitamin K:</span> Blutgerinnung, Knochenaufbau</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>Besonders kritische Vitamine für Sportler</h4>
+                    <ul>
+                        <li><span class="highlight">Vitamin D:</span> 80% der Deutschen haben Mangel (besonders Winter)</li>
+                        <li><span class="highlight">Vitamin B12:</span> Kritisch bei veganer Ernährung</li>
+                        <li><span class="highlight">Folsäure:</span> Häufiger Mangel bei Frauen</li>
+                        <li><span class="highlight">Vitamin C:</span> Erhöhter Bedarf bei intensivem Training</li>
+                        <li><span class="highlight">B-Vitamine:</span> Höherer Bedarf bei erhöhtem Energieumsatz</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Wasserhaushalt -->
+        <div class="section">
+            <div class="section-title">5. Wasserhaushalt und Getränke</div>
+            
+            <div class="hydration-box">
+                <h4>💧 Flüssigkeitsbedarf im Sport</h4>
+                <div class="formula">
+                    Grundbedarf: 30-35 ml/kg Körpergewicht/Tag<br>
+                    + Schweißverluste beim Sport (500-3000 ml/h)
+                </div>
+                <ul>
+                    <li>Bereits 2% Flüssigkeitsverlust reduziert Leistung um 10-15%</li>
+                    <li>Durstgefühl = bereits 1-2% Dehydrierung</li>
+                    <li>Vor Training: 400-600 ml (2-3h vorher)</li>
+                    <li>Während Training: 150-250 ml alle 15-20 Min.</li>
+                    <li>Nach Training: 150% der Schweißverluste ersetzen</li>
+                </ul>
+            </div>
+            
+            <div class="content-grid">
+                <div class="info-box">
+                    <h4>Elektrolytverluste durch Schweiß</h4>
+                    <ul>
+                        <li><span class="highlight">Natrium:</span> 500-1500 mg/L Schweiß (wichtigster Elektrolyt)</li>
+                        <li><span class="highlight">Kalium:</span> 150-300 mg/L Schweiß</li>
+                        <li><span class="highlight">Magnesium:</span> 10-40 mg/L Schweiß</li>
+                        <li><span class="highlight">Calcium:</span> 15-50 mg/L Schweiß</li>
+                        <li><span class="highlight">Individuelle Unterschiede:</span> Schweißrate und -zusammensetzung variieren</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>Optimale Sportgetränke</h4>
+                    <ul>
+                        <li><span class="highlight">Kohlenhydrate:</span> 6-8% (60-80g/L) für Energie</li>
+                        <li><span class="highlight">Natrium:</span> 300-700 mg/L für Elektrolytbalance</li>
+                        <li><span class="highlight">Osmolarität:</span> Isoton oder leicht hypoton (280-320 mOsm/L)</li>
+                        <li><span class="highlight">Temperatur:</span> 15-20°C für optimale Aufnahme</li>
+                        <li><span class="highlight">Geschmack:</span> Leicht süß und salzig für bessere Akzeptanz</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>Getränkewahl nach Belastungsdauer</h4>
+                    <ul>
+                        <li><span class="highlight">< 60 Min:</span> Wasser meist ausreichend</li>
+                        <li><span class="highlight">60-90 Min:</span> Kohlenhydrat-Elektrolyt-Getränk empfohlen</li>
+                        <li><span class="highlight">> 90 Min:</span> Sportgetränk + eventuell feste Nahrung</li>
+                        <li><span class="highlight">Hitze/hohe Schweißrate:</span> Immer Elektrolytgetränk</li>
+                        <li><span class="highlight">Nach dem Sport:</span> Natrium hilft bei Rehydration</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Timing der Nahrungsaufnahme -->
+        <div class="section">
+            <div class="section-title">⏰ Timing der Nahrungsaufnahme (Nutrient Timing)</div>
+            
+            <div class="timing-box">
+                <h4>⏰ Optimales Nutrient Timing</h4>
+                
+                <div class="content-grid">
+                    <div style="background: rgba(255,255,255,0.8); color: #2c3e50; padding: 15px; border-radius: 8px;">
+                        <h5>3-4 Stunden vor Training</h5>
+                        <ul>
+                            <li>Vollständige, ausgewogene Mahlzeit</li>
+                            <li>Reich an Kohlenhydraten (1-4g/kg KG)</li>
+                            <li>Moderate Proteine (0.5-1g/kg KG)</li>
+                            <li>Wenig Fett und Ballaststoffe</li>
+                            <li>Ausreichend Flüssigkeit (5-7ml/kg KG)</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: rgba(255,255,255,0.8); color: #2c3e50; padding: 15px; border-radius: 8px;">
+                        <h5>1-2 Stunden vor Training</h5>
+                        <ul>
+                            <li>Leichte Kohlenhydrat-Snacks</li>
+                            <li>Beispiele: Banane, Toast mit Honig, Müsliriegel</li>
+                            <li>Wenig Fett, Protein und Ballaststoffe</li>
+                            <li>300-500 ml Flüssigkeit</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: rgba(255,255,255,0.8); color: #2c3e50; padding: 15px; border-radius: 8px;">
+                        <h5>Während Training (> 60 Min)</h5>
+                        <ul>
+                            <li>30-60g Kohlenhydrate/Stunde</li>
+                            <li>Sportgetränk, Gel oder Riegel</li>
+                            <li>150-250 ml Flüssigkeit alle 15-20 Min</li>
+                            <li>Leicht verdaulich und magenfreundlich</li>
+                            <li>Bei >2.5h: Verschiedene KH-Quellen kombinieren</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: rgba(255,255,255,0.8); color: #2c3e50; padding: 15px; border-radius: 8px;">
+                        <h5>0-30 Min nach Training ("Anabolic Window")</h5>
+                        <ul>
+                            <li>1-1.5g Kohlenhydrate/kg Körpergewicht</li>
+                            <li>0.3-0.5g Protein/kg Körpergewicht</li>
+                            <li>Schnell verfügbare Nährstoffe bevorzugen</li>
+                            <li>Beispiel: Schokomilch, Banane + Quark</li>
+                            <li>Beginn der Rehydration</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: rgba(255,255,255,0.8); color: #2c3e50; padding: 15px; border-radius: 8px;">
+                        <h5>2-3 Stunden nach Training</h5>
+                        <ul>
+                            <li>Vollständige Regenerationsmahlzeit</li>
+                            <li>Ausgewogene Makronährstoffverteilung</li>
+                            <li>Hohe Nährstoffdichte bevorzugen</li>
+                            <li>Fortsetzung der Rehydration</li>
+                            <li>Anti-entzündliche Lebensmittel</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Ernährungspyramide für Sportler -->
+        <div class="section">
+            <div class="section-title">🏛️ Ernährungspyramide für Sportler</div>
+            
+            <div class="food-pyramid">
+                <h4>🏛️ Sporternährungspyramide</h4>
+                
+                <div class="pyramid-level level-4">
+                    <strong>Süßigkeiten, Alkohol, verarbeitete Lebensmittel</strong><br>
+                    Sparsam verwenden - nur gelegentlich
+                </div>
+                
+                <div class="pyramid-level level-3">
+                    <strong>Fette, Öle, Nüsse, Samen</strong><br>
+                    20-35% der Gesamtkalorien - Qualität vor Quantität
+                </div>
+                
+                <div class="pyramid-level level-2">
+                    <strong>Fleisch, Fisch, Eier, Hülsenfrüchte, Milchprodukte</strong><br>
+                    1.2-2.0g Protein/kg Körpergewicht je nach Sportart
+                </div>
+                
+                <div class="pyramid-level level-1">
+                    <strong>Getreide, Kartoffeln, Obst, Gemüse</strong><br>
+                    5-12g Kohlenhydrate/kg Körpergewicht je nach Trainingsumfang
+                </div>
+                
+                <div style="background: rgba(52, 152, 219, 0.4); padding: 20px; border-radius: 8px; margin-top: 15px;">
+                    <strong>💧 FLÜSSIGKEITEN - FUNDAMENTALE BASIS</strong><br>
+                    2-4 Liter/Tag + Schweißverluste während Sport
+                </div>
+            </div>
+        </div>
+        
+        <!-- Supplemente und Nahrungsergänzung -->
+        <div class="section">
+            <div class="section-title">💊 Supplemente und Nahrungsergänzung</div>
+            
+            <div class="content-grid">
+                <div class="info-box">
+                    <h4>Evidenzbasiert sinnvolle Supplemente</h4>
+                    <ul>
+                        <li><span class="highlight">Kreatin:</span> 3-5g/Tag für Schnellkraft- und Kraftsportarten</li>
+                        <li><span class="highlight">Vitamin D:</span> Bei unzureichender Sonnenexposition (1000-2000 IE/Tag)</li>
+                        <li><span class="highlight">Vitamin B12:</span> Besonders bei veganer Ernährung (250-500μg/Tag)</li>
+                        <li><span class="highlight">Omega-3:</span> 1-3g EPA+DHA/Tag für Entzündungshemmung</li>
+                        <li><span class="highlight">Magnesium:</span> Bei intensivem Training und Krämpfen</li>
+                        <li><span class="highlight">Eisen:</span> Nur bei labordiagnostisch nachgewiesenem Mangel</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>Möglicherweise hilfreiche Supplements</h4>
+                    <ul>
+                        <li><span class="highlight">Koffein:</span> 3-6mg/kg KG für Ausdauer und Aufmerksamkeit</li>
+                        <li><span class="highlight">Beta-Alanin:</span> 3-5g/Tag für Muskelausdauer</li>
+                        <li><span class="highlight">HMB:</span> Bei intensivem Training zur Regeneration</li>
+                        <li><span class="highlight">Citrullin:</span> 6-8g für Kraftausdauer</li>
+                        <li><span class="highlight">Probiotika:</span> Für Darmgesundheit und Immunsystem</li>
+                    </ul>
+                </div>
+                
+                <div class="warning-box">
+                    <h4>❌ Fragwürdige oder unnötige Supplemente</h4>
+                    <ul>
+                        <li><span class="highlight">Multivitamin-Präparate:</span> Meist überflüssig bei ausgewogener Ernährung</li>
+                        <li><span class="highlight">Einzelne Aminosäuren:</span> Vollwertige Proteine sind besser</li>
+                        <li><span class="highlight">Fatburner:</span> Keine nachgewiesene Wirkung, oft gefährlich</li>
+                        <li><span class="highlight">Isotonische Getränke:</span> Bei kurzen Einheiten (<60 Min) unnötig</li>
+                        <li><span class="highlight">Teure Protein-Shakes:</span> Normale Lebensmittel oft besser</li>
+                        <li><span class="highlight">Entgiftungsprodukte:</span> Wissenschaftlich unbegründet</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Kreatin-Spezial -->
+        <div class="section">
+            <div class="section-title">⚡ Kreatin - Das wissenschaftlich bestbewertete Supplement</div>
+            
+            <div class="content-grid">
+                <div class="info-box">
+                    <h4>Was ist Kreatin?</h4>
+                    <ul>
+                        <li>Natürlich vorkommende Verbindung in Muskelzellen</li>
+                        <li>Regeneriert ATP für explosive Bewegungen</li>
+                        <li>Körper produziert 1-2g/Tag selbst</li>
+                        <li>Vorkommen: Fleisch, Fisch (verloren beim Kochen)</li>
+                        <li>Speicher in Muskel: 95% des Körperkreatins</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>Nachgewiesene Wirkungen</h4>
+                    <ul>
+                        <li><span class="highlight">Schnellkraft:</span> +5-15% Verbesserung</li>
+                        <li><span class="highlight">Maximalkraft:</span> +5-10% bei Wiederholungen</li>
+                        <li><span class="highlight">Regeneration:</span> Schnellere Erholung zwischen Sätzen</li>
+                        <li><span class="highlight">Muskelmasse:</span> Unterstützt Hypertrophie</li>
+                        <li><span class="highlight">Kognition:</span> Möglicherweise bessere Gehirnfunktion</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>Anwendung und Dosierung</h4>
+                    <ul>
+                        <li><span class="highlight">Erhaltungsdosis:</span> 3-5g täglich</li>
+                        <li><span class="highlight">Ladephase (optional):</span> 20g/Tag für 5-7 Tage</li>
+                        <li><span class="highlight">Timing:</span> Egal wann, Hauptsache täglich</li>
+                        <li><span class="highlight">Form:</span> Kreatin-Monohydrat (günstigste, beste erforscht)</li>
+                        <li><span class="highlight">Nebenwirkung:</span> 1-3kg Gewichtszunahme durch Wassereinlagerung</li>
+                        <li><span class="highlight">Sicherheit:</span> Sehr gut verträglich, auch langfristig</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Sporternährung bei speziellen Bedürfnissen -->
+        <div class="section">
+            <div class="section-title">🌱 Sporternährung bei speziellen Bedürfnissen</div>
+            
+            <div class="content-grid">
+                <div class="info-box">
+                    <h4>🌱 Vegetarische/Vegane Sporternährung</h4>
+                    <ul>
+                        <li><span class="highlight">Protein:</span> Kombinationen aus Hülsenfrüchten + Getreide</li>
+                        <li><span class="highlight">Vitamin B12:</span> Supplementierung zwingend notwendig</li>
+                        <li><span class="highlight">Eisen:</span> Pflanzliches Eisen + Vitamin C kombinieren</li>
+                        <li><span class="highlight">Zink:</span> Nüsse, Samen, Vollkornprodukte</li>
+                        <li><span class="highlight">Omega-3:</span> Leinöl, Chiasamen, Walnüsse, Algenöl</li>
+                        <li><span class="highlight">Kreatin:</span> Oft niedriger bei Vegetariern → Supplementierung</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>⚖️ Gewichtsmanagement im Sport</h4>
+                    <ul>
+                        <li><span class="highlight">Gewichtsreduktion:</span> Moderates Defizit 300-500 kcal/Tag</li>
+                        <li><span class="highlight">Proteinerhaltung:</span> 1.6-2.4g/kg bei Diät</li>
+                        <li><span class="highlight">Krafttraining:</span> Essentiell für Muskelmasse-Erhaltung</li>
+                        <li><span class="highlight">Timing:</span> Nicht während wichtiger Wettkampfphase</li>
+                        <li><span class="highlight">Realistische Ziele:</span> 0.5-1% Körpergewicht/Woche</li>
+                        <li><span class="highlight">Psychologie:</span> Flexible Diätansätze nachhaltiger</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>🏋️‍♂️ Masseaufbau (Lean Bulking)</h4>
+                    <ul>
+                        <li><span class="highlight">Kalorienüberschuss:</span> 200-500 kcal über Bedarf</li>
+                        <li><span class="highlight">Protein:</span> 1.6-2.2g/kg Körpergewicht</li>
+                        <li><span class="highlight">Kohlenhydrate:</span> 4-7g/kg für Energieversorgung</li>
+                        <li><span class="highlight">Progressives Training:</span> Wichtiger als Ernährung</li>
+                        <li><span class="highlight">Geduld:</span> 0.25-0.5kg Zunahme/Woche</li>
+                        <li><span class="highlight">Überwachung:</span> Regelmäßige Körperkompositionsmessung</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Wettkampfernährung -->
+        <div class="section">
+            <div class="section-title">🏆 Wettkampfernährung</div>
+            
+            <div class="timing-box">
+                <h4>🏆 Carb Loading (Kohlenhydratladung)</h4>
+                <p>Strategie zur Maximierung der Glykogenspeicher vor langen Ausdauerbelastungen (>90 Min.)</p>
+                
+                <div class="content-grid">
+                    <div style="background: rgba(255,255,255,0.8); color: #2c3e50; padding: 15px; border-radius: 8px;">
+                        <h5>7-4 Tage vor Wettkampf</h5>
+                        <ul>
+                            <li>Normales Training mit Taper-Beginn</li>
+                            <li>Moderate Kohlenhydratzufuhr (5-7g/kg)</li>
+                            <li>Gewohnte Ernährung beibehalten</li>
+                            <li>Ausreichend Flüssigkeit</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: rgba(255,255,255,0.8); color: #2c3e50; padding: 15px; border-radius: 8px;">
+                        <h5>3-1 Tage vor Wettkampf</h5>
+                        <ul>
+                            <li>Drastische Trainingsreduzierung</li>
+                            <li>Hohe Kohlenhydratzufuhr (8-12g/kg)</li>
+                            <li>Wenig Fett und Ballaststoffe</li>
+                            <li>Viel trinken (extra 500-750ml/Tag)</li>
+                            <li>Nur bekannte, verträgliche Lebensmittel</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: rgba(255,255,255,0.8); color: #2c3e50; padding: 15px; border-radius: 8px;">
+                        <h5>Wettkampftag</h5>
+                        <ul>
+                            <li>3-4h vor Start: Letzte große Mahlzeit</li>
+                            <li>1-4g Kohlenhydrate/kg Körpergewicht</li>
+                            <li>Wenig Fett, Ballaststoffe, Protein</li>
+                            <li>Nur bewährte Lebensmittel verwenden</li>
+                            <li>Ausreichend, aber nicht übermäßig trinken</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="formula">
+                    Ziel: Glykogenspeicher von ~500g auf 600-800g erhöhen<br>
+                    <small>Funktioniert nur bei trainingsreduzierten, ausdauertrainierten Athleten</small>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Ernährungsmythen -->
+        <div class="section">
+            <div class="section-title">🔍 Ernährungsmythen im Sport aufgeklärt</div>
+            
+            <div class="content-grid">
+                <div class="warning-box">
+                    <h4>❌ Mythos: "Mehr Protein = mehr Muskeln"</h4>
+                    <p><strong>Realität:</strong> Ab 2.2g/kg bringen zusätzliche Proteine keine Vorteile. Überschuss wird verstoffwechselt oder als Harnstoff ausgeschieden. Training ist wichtiger als Proteinmenge.</p>
+                </div>
+                
+                <div class="warning-box">
+                    <h4>❌ Mythos: "Kohlenhydrate machen dick"</h4>
+                    <p><strong>Realität:</strong> Kohlenhydrate sind der Hauptenergielieferant für intensive Belastungen. Entscheidend ist die Gesamtkalorienbilanz, nicht der Zeitpunkt der KH-Aufnahme.</p>
+                </div>
+                
+                <div class="warning-box">
+                    <h4>❌ Mythos: "Fett verbrennt nur ab 30 Minuten"</h4>
+                    <p><strong>Realität:</strong> Fettverbrennung läuft immer ab. Der Anteil steigt mit der Zeit und sinkt mit der Intensität, aber auch 10-Minuten-Einheiten verbrennen Fett.</p>
+                </div>
+                
+                <div class="warning-box">
+                    <h4>❌ Mythos: "Nach 18 Uhr keine Kohlenhydrate"</h4>
+                    <p><strong>Realität:</strong> Der Zeitpunkt der Nahrungsaufnahme ist für das Körpergewicht irrelevant. Wichtig ist nur die Gesamtkalorienbilanz über den Tag verteilt.</p>
+                </div>
+                
+                <div class="warning-box">
+                    <h4>❌ Mythos: "Supplements sind für Sportler notwendig"</h4>
+                    <p><strong>Realität:</strong> Eine ausgewogene Ernährung deckt fast alle Bedürfnisse ab. Nur wenige Supplements (Kreatin, Vitamin D, B12 bei Veganern) sind evidenzbasiert sinnvoll.</p>
+                </div>
+                
+                <div class="warning-box">
+                    <h4>❌ Mythos: "Anabolic Window nur 30 Minuten"</h4>
+                    <p><strong>Realität:</strong> Das "Fenster" für optimale Proteinaufnahme ist mehrere Stunden lang. Die Gesamtproteinzufuhr über den Tag ist wichtiger als das exakte Timing.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Praktische Ernährungstipps -->
+        <div class="section">
+            <div class="section-title">💡 Praktische Ernährungstipps für Sportler</div>
+            
+            <div class="content-grid">
+                <div class="exercise-box">
+                    <h5>🛒 Meal Prep für Sportler</h5>
+                    <ul>
+                        <li><strong>Sonntag:</strong> Wochenplanung und Großeinkauf</li>
+                        <li><strong>Batch Cooking:</strong> Große Mengen vorkochen (Reis, Quinoa, Hähnchen)</li>
+                        <li><strong>Portionierung:</strong> Mahlzeiten in Glasboxen aufteilen</li>
+                        <li><strong>Snack-Vorbereitung:</strong> Nüsse, Obst, Energiebälle vorbereiten</li>
+                        <li><strong>Flexibilität:</strong> Grundlagen vorbereiten, frisch variieren</li>
+                        <li><strong>Haltbarkeit:</strong> 3-4 Tage Kühlschrank, länger einfrieren</li>
+                    </ul>
+                </div>
+                
+                <div class="exercise-box">
+                    <h5>🎒 Sporttasche-Essentials</h5>
+                    <ul>
+                        <li><strong>Banane:</strong> Schnelle Kohlenhydrate, Kalium</li>
+                        <li><strong>Nüsse/Studentenfutter:</strong> Gesunde Fette + Protein</li>
+                        <li><strong>Wasserflasche:</strong> Immer griffbereit haben</li>
+                        <li><strong>Müsliriegel:</strong> Energieschub vor dem Training</li>
+                        <li><strong>Schokomilch:</strong> Ideales Recovery-Getränk (KH:Protein = 3:1)</li>
+                        <li><strong>Salzige Snacks:</strong> Bei starkem Schwitzen</li>
+                    </ul>
+                </div>
+                
+                <div class="exercise-box">
+                    <h5>⏰ Timing-Hacks für Berufstätige</h5>
+                    <ul>
+                        <li><strong>Frühstück:</strong> Overnight Oats am Vorabend vorbereiten</li>
+                        <li><strong>Mittagessen:</strong> Meal Prep am Wochenende</li>
+                        <li><strong>Pre-Workout:</strong> Banane 30-60 Min. vor Training</li>
+                        <li><strong>Post-Workout:</strong> Protein-Shake direkt nach Training</li>
+                        <li><strong>Abendessen:</strong> Leicht verdaulich, proteinreich</li>
+                        <li><strong>Snacks:</strong> Alle 3-4 Stunden kleine Mahlzeit</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Budget-freundliche Sporternährung -->
+        <div class="section">
+            <div class="section-title">💰 Budget-freundliche Sporternährung</div>
+            
+            <div class="content-grid">
+                <div class="info-box">
+                    <h4>Günstige Proteinquellen</h4>
+                    <ul>
+                        <li><span class="highlight">Eier:</span> Hochwertiges Protein, vielseitig einsetzbar</li>
+                        <li><span class="highlight">Quark/Skyr:</span> Günstig, viel Protein, lange sättigend</li>
+                        <li><span class="highlight">Hülsenfrüchte:</span> Linsen, Bohnen, Kichererbsen (getrocknet)</li>
+                        <li><span class="highlight">Hähnchenbrust:</span> Mager, preiswert bei Angeboten</li>
+                        <li><span class="highlight">Thunfisch (Dose):</span> Praktisch und lange haltbar</li>
+                        <li><span class="highlight">Milchpulver:</span> Kostengünstiges Protein für Shakes</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>Günstige Kohlenhydratquellen</h4>
+                    <ul>
+                        <li><span class="highlight">Haferflocken:</span> Vielseitig, sättigend, günstig</li>
+                        <li><span class="highlight">Kartoffeln:</span> Günstiger als Nudeln, nährstoffreich</li>
+                        <li><span class="highlight">Reis:</span> Basis für viele Gerichte</li>
+                        <li><span class="highlight">Vollkornnudeln:</span> Lange haltbar, sättigend</li>
+                        <li><span class="highlight">Bananen:</span> Schnelle Energie, immer verfügbar</li>
+                        <li><span class="highlight">Süßkartoffeln:</span> Nährstoffdicht, vielseitig</li>
+                    </ul>
+                </div>
+                
+                <div class="exercise-box">
+                    <h5>💡 Spartipps für Sportlerernährung</h5>
+                    <ul>
+                        <li><strong>Großpackungen:</strong> Preisvergleich pro kg durchführen</li>
+                        <li><strong>Saisonales Obst/Gemüse:</strong> Günstiger und frischer</li>
+                        <li><strong>Tiefkühlgemüse:</strong> Nährstoffreich, lange haltbar</li>
+                        <li><strong>Eigenmarken:</strong> Oft gleiche Qualität, günstigerer Preis</li>
+                        <li><strong>Meal Prep:</strong> Reduziert Lebensmittelverschwendung</li>
+                        <li><strong>Angebote nutzen:</strong> Fleisch einfrieren, Haltbares bevorraten</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Interaktives Element -->
+        <div class="interactive-element">
+            <h4>🧮 Erweiterte Nährstoff- & Mahlzeitenplanung</h4>
+            <p>Umfassende Berechnung deines Nährstoffbedarfs mit personalisierten Mahlzeitenvorschlägen:</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin: 20px 0;">
+                <input type="number" id="weight-ext" placeholder="Gewicht (kg)" style="padding: 10px; border-radius: 5px; border: none;">
+                <input type="number" id="height-ext" placeholder="Größe (cm)" style="padding: 10px; border-radius: 5px; border: none;">
+                <input type="number" id="age-ext" placeholder="Alter" style="padding: 10px; border-radius: 5px; border: none;">
+                <select id="gender-ext" style="padding: 10px; border-radius: 5px; border: none;">
+                    <option value="">Geschlecht</option>
+                    <option value="male">Männlich</option>
+                    <option value="female">Weiblich</option>
+                </select>
+                <select id="activity-ext" style="padding: 10px; border-radius: 5px; border: none;">
+                    <option value="">Aktivitätslevel</option>
+                    <option value="1.2">Wenig aktiv (Büro, kein Sport)</option>
+                    <option value="1.375">Leicht aktiv (1-3x Sport/Woche)</option>
+                    <option value="1.55">Mäßig aktiv (3-5x Sport/Woche)</option>
+                    <option value="1.725">Sehr aktiv (6-7x Sport/Woche)</option>
+                    <option value="1.9">Extrem aktiv (2x täglich Sport)</option>
+                </select>
+                <select id="sport-type" style="padding: 10px; border-radius: 5px; border: none;">
+                    <option value="">Hauptsportart</option>
+                    <option value="endurance">Ausdauersport</option>
+                    <option value="strength">Kraftsport</option>
+                    <option value="team">Mannschaftssport</option>
+                    <option value="mixed">Gemischtes Training</option>
+                </select>
+                <select id="goal-ext" style="padding: 10px; border-radius: 5px; border: none;">
+                    <option value="">Ziel</option>
+                    <option value="maintain">Gewicht halten</option>
+                    <option value="lose">Abnehmen</option>
+                    <option value="gain">Zunehmen (Masse)</option>
+                    <option value="performance">Leistung steigern</option>
+                </select>
+            </div>
+            <button class="button" onclick="calculateExtendedNutrition()">Detailplan erstellen</button>
+            <div id="extended-result" style="margin-top: 20px; font-weight: 600;"></div>
+        </div>
+        
+        <!-- Bewegung in verschiedenen Lebensphasen -->
+        <div class="section">
+            <div class="section-title">🔄 Ernährung in verschiedenen Lebensphasen</div>
+            
+            <div class="content-grid">
+                <div class="info-box">
+                    <h4>Jugendliche Sportler (14-18 Jahre)</h4>
+                    <ul>
+                        <li><span class="highlight">Wachstum:</span> Erhöhter Energie- und Proteinbedarf</li>
+                        <li><span class="highlight">Calcium:</span> 1200-1300mg/Tag für Knochenaufbau</li>
+                        <li><span class="highlight">Eisen:</span> Besonders bei Mädchen (Menstruation)</li>
+                        <li><span class="highlight">Regelmäßigkeit:</span> Alle 3-4 Stunden essen</li>
+                        <li><span class="highlight">Bildung:</span> Ernährungswissen früh vermitteln</li>
+                        <li><span class="highlight">Flexibilität:</span> Soziale Aspekte berücksichtigen</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>Erwachsene Sportler (18-65 Jahre)</h4>
+                    <ul>
+                        <li><span class="highlight">Berufsstress:</span> Praktische Lösungen für Zeitmangel</li>
+                        <li><span class="highlight">Effizienz:</span> Meal Prep und zeitsparende Zubereitung</li>
+                        <li><span class="highlight">Prävention:</span> Antioxidantien gegen oxidativen Stress</li>
+                        <li><span class="highlight">Work-Life-Balance:</span> Ernährung in Arbeitsalltag integrieren</li>
+                        <li><span class="highlight">Familiensport:</span> Gesunde Ernährung für die ganze Familie</li>
+                        <li><span class="highlight">Individualität:</span> Anpassung an persönliche Vorlieben</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>Ältere Sportler (65+ Jahre)</h4>
+                    <ul>
+                        <li><span class="highlight">Protein:</span> Erhöhter Bedarf (1.2-1.6g/kg) gegen Sarkopenie</li>
+                        <li><span class="highlight">Hydration:</span> Durstgefühl nimmt ab - bewusst trinken</li>
+                        <li><span class="highlight">Vitamin D:</span> Supplementierung oft notwendig</li>
+                        <li><span class="highlight">B12:</span> Absorption nimmt ab - auf Versorgung achten</li>
+                        <li><span class="highlight">Verdauung:</span> Kleinere, häufigere Mahlzeiten</li>
+                        <li><span class="highlight">Medikamente:</span> Wechselwirkungen mit Nährstoffen beachten</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Ernährung bei besonderen Bedingungen -->
+        <div class="section">
+            <div class="section-title">🏥 Sporternährung bei besonderen Bedingungen</div>
+            
+            <div class="content-grid">
+                <div class="info-box">
+                    <h4>Diabetes mellitus</h4>
+                    <ul>
+                        <li><span class="highlight">Blutzuckerkontrolle:</span> Regelmäßige Mahlzeiten wichtig</li>
+                        <li><span class="highlight">Kohlenhydrate:</span> Komplexe KH bevorzugen, GI beachten</li>
+                        <li><span class="highlight">Training:</span> Blutzucker vor, während, nach Sport messen</li>
+                        <li><span class="highlight">Hypoglykämie:</span> Schnelle KH griffbereit haben</li>
+                        <li><span class="highlight">Medikation:</span> Insulin an Training anpassen</li>
+                        <li><span class="highlight">Langzeitmonitoring:</span> HbA1c-Werte überwachen</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>Nahrungsmittelunverträglichkeiten</h4>
+                    <ul>
+                        <li><span class="highlight">Laktoseintoleranz:</span> Laktosefreie Alternativen nutzen</li>
+                        <li><span class="highlight">Zöliakie:</span> Strikt glutenfreie Ernährung</li>
+                        <li><span class="highlight">Fruktosemalabsorption:</span> Fruktosearme Sportgetränke</li>
+                        <li><span class="highlight">Allergien:</span> Notfallmedikamente beim Sport</li>
+                        <li><span class="highlight">FODMAP:</span> Bei Reizdarm individuelle Verträglichkeit testen</li>
+                        <li><span class="highlight">Alternativen:</span> Nährstoffverluste durch Ersatzprodukte ausgleichen</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>Essstörungen im Sport</h4>
+                    <ul>
+                        <li><span class="highlight">Früherkennung:</span> Warnsignale bei Sportlern beachten</li>
+                        <li><span class="highlight">Relative Energy Deficiency (REDs):</span> Energiemangel vermeiden</li>
+                        <li><span class="highlight">Weibliche Triade:</span> Amenorrhoe, Osteoporose, Essstörung</li>
+                        <li><span class="highlight">Professionelle Hilfe:</span> Interdisziplinäres Team einbeziehen</li>
+                        <li><span class="highlight">Prävention:</span> Gesunde Einstellung zu Körper und Ernährung</li>
+                        <li><span class="highlight">Performance:</span> Leistung vs. Körpergewicht entkoppeln</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Motivation und Ernährungsverhalten -->
+        <div class="section">
+            <div class="section-title">🎯 Motivation und nachhaltiges Ernährungsverhalten</div>
+            
+            <div class="content-grid">
+                <div class="exercise-box">
+                    <h5>Psychologische Strategien für gesunde Ernährung</h5>
+                    <ul>
+                        <li><strong>80/20-Regel:</strong> 80% gesund, 20% flexibel für Lebensqualität</li>
+                        <li><strong>Habit Stacking:</strong> Neue Gewohnheiten an bestehende koppeln</li>
+                        <li><strong>Meal Planning:</strong> Entscheidungsmüdigkeit reduzieren</li>
+                        <li><strong>Positive Verstärkung:</strong> Erfolge feiern, nicht nur Fehler fokussieren</li>
+                        <li><strong>Soziale Unterstützung:</strong> Familie und Freunde einbeziehen</li>
+                        <li><strong>Achtsamkeit:</strong> Bewusst essen, Sättigungsgefühl beachten</li>
+                    </ul>
+                </div>
+                
+                <div class="exercise-box">
+                    <h5>Überwindung häufiger Ernährungsbarrieren</h5>
+                    <ul>
+                        <li><strong>Zeitmangel:</strong> Meal Prep, einfache Rezepte, Convenience nutzen</li>
+                        <li><strong>Hohe Kosten:</strong> Saisonale Produkte, Eigenmarken, selber kochen</li>
+                        <li><strong>Geschmack:</strong> Gewürze nutzen, neue Zubereitungsarten ausprobieren</li>
+                        <li><strong>Unwissen:</strong> Ernährungsberatung, vertrauensvolle Quellen nutzen</li>
+                        <li><strong>Soziales Umfeld:</strong> Kommunikation, Alternativen anbieten</li>
+                        <li><strong>Stress-Eating:</strong> Alternative Bewältigungsstrategien entwickeln</li>
+                    </ul>
+                </div>
+                
+                <div class="exercise-box">
+                    <h5>Langfristige Verhaltensänderung</h5>
+                    <ul>
+                        <li><strong>Kleine Schritte:</strong> Einen Aspekt nach dem anderen ändern</li>
+                        <li><strong>Realistische Ziele:</strong> Erreichbare Meilensteine setzen</li>
+                        <li><strong>Flexibilität:</strong> Anpassung an Lebenssituationen</li>
+                        <li><strong>Selbstmitgefühl:</strong> Rückschläge als normal akzeptieren</li>
+                        <li><strong>Intrinsische Motivation:</strong> Eigene Gründe finden, nicht extern motiviert</li>
+                        <li><strong>Lebensstil:</strong> Ernährung als Teil des Gesamtkonzepts sehen</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Zusammenfassung -->
+        <div class="section">
+            <div class="section-title">🎯 Zusammenfassung: Ernährung als Leistungsfaktor</div>
+            
+            <div class="content-grid">
+                <div class="info-box">
+                    <h4>Die 3 Säulen der Sporternährung</h4>
+                    <ul>
+                        <li><strong>Energieversorgung:</strong> Ausreichend Kalorien für Training und Regeneration</li>
+                        <li><strong>Nährstoffdichte:</strong> Hochwertige Makro- und Mikronährstoffe</li>
+                        <li><strong>Timing:</strong> Richtige Nährstoffe zur richtigen Zeit</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>Grundregeln für Sportler</h4>
+                    <ul>
+                        <li>Vielfältige, ausgewogene Ernährung als Basis</li>
+                        <li>Ausreichend trinken vor, während und nach Sport</li>
+                        <li>Regelmäßige Mahlzeiten für stabile Energieversorgung</li>
+                        <li>Supplements nur bei nachgewiesenem Nutzen verwenden</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>Langfristige Perspektive</h4>
+                    <ul>
+                        <li>Nachhaltige Ernährungsweise vor kurzfristigen Diäten</li>
+                        <li>Genuss und Lebensqualität erhalten</li>
+                        <li>Individuelle Anpassung an Lebenssituation</li>
+                        <li>Kontinuierliche Weiterbildung und Anpassung</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Weiterführende Ressourcen -->
+        <div class="section">
+            <div class="section-title">📚 Weiterführende Ressourcen und Literatur</div>
+            
+            <div class="content-grid">
+                <div class="info-box">
+                    <h4>Wissenschaftliche Quellen</h4>
+                    <ul>
+                        <li>Deutsche Gesellschaft für Ernährung (DGE) - Sporternährung</li>
+                        <li>International Society of Sports Nutrition (ISSN)</li>
+                        <li>American College of Sports Medicine (ACSM)</li>
+                        <li>Position Statements zu Sporternährung</li>
+                        <li>Peer-Review Journals: Journal of Sports Sciences</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>Praktische Tools</h4>
+                    <ul>
+                        <li>Nährwert-Apps: MyFitnessPal, Cronometer</li>
+                        <li>Rezept-Datenbanken für Sportler</li>
+                        <li>Meal-Prep-Anleitungen und Pläne</li>
+                        <li>Hydration-Tracker und Erinnerungen</li>
+                        <li>Supplement-Guides und Bewertungen</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h4>Professionelle Beratung</h4>
+                    <ul>
+                        <li>Zertifizierte Sporternährungsberater</li>
+                        <li>Ernährungsmediziner mit Sportschwerpunkt</li>
+                        <li>Leistungsdiagnostik-Zentren</li>
+                        <li>Olympiastützpunkte und Bundesleistungszentren</li>
+                        <li>Qualifizierte Online-Beratungsplattformen</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function showTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab content
+            document.getElementById(tabId).classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+        
+        function calculateExtendedNutrition() {
+            const weight = parseFloat(document.getElementById('weight-ext').value);
+            const height = parseFloat(document.getElementById('height-ext').value);
+            const age = parseInt(document.getElementById('age-ext').value);
+            const gender = document.getElementById('gender-ext').value;
+            const activityFactor = parseFloat(document.getElementById('activity-ext').value);
+            const sportType = document.getElementById('sport-type').value;
+            const goal = document.getElementById('goal-ext').value;
+            
+            if (!weight || !height || !age || !gender || !activityFactor || !sportType || !goal || 
+                weight <= 0 || height <= 0 || age < 5 || age > 120) {
+                document.getElementById('extended-result').innerHTML = 
+                    '<p style="color: #e74c3c;">Bitte fülle alle Felder korrekt aus (Gewicht > 0, Größe > 0, Alter 5-120).</p>';
+                return;
+            }
+            
+            // Calculate BMR using Harris-Benedict equation
+            let bmr;
+            if (gender === 'male') {
+                bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
+            } else {
+                bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
+            }
+            
+            // Calculate total daily energy expenditure
+            const tdee = Math.round(bmr * activityFactor);
+            
+            // Adjust calories based on goal
+            let targetCalories = tdee;
+            let calorieAdjustment = "";
+            
+            switch(goal) {
+                case 'lose':
+                    targetCalories = tdee - 400;
+                    calorieAdjustment = "Moderat Abnehmen: -400 kcal/Tag";
+                    break;
+                case 'gain':
+                    targetCalories = tdee + 300;
+                    calorieAdjustment = "Lean Bulk: +300 kcal/Tag";
+                    break;
+                case 'maintain':
+                    calorieAdjustment = "Gewicht halten: Erhaltungskalorien";
+                    break;
+                case 'performance':
+                    targetCalories = tdee + 100;
+                    calorieAdjustment = "Leistung optimieren: +100 kcal/Tag";
+                    break;
+            }
+            
+            // Calculate macronutrients based on sport type and goal
+            let proteinGrams, carbGrams, fatGrams;
+            let proteinPerKg, carbPerKg;
+            
+            // Protein recommendations
+            switch(sportType) {
+                case 'endurance':
+                    proteinPerKg = goal === 'lose' ? 1.6 : 1.4;
+                    break;
+                case 'strength':
+                    proteinPerKg = goal === 'lose' ? 2.2 : 1.8;
+                    break;
+                case 'team':
+                    proteinPerKg = goal === 'lose' ? 1.8 : 1.6;
+                    break;
+                case 'mixed':
+                    proteinPerKg = goal === 'lose' ? 1.9 : 1.7;
+                    break;
+            }
+            
+            // Carbohydrate recommendations
+            switch(sportType) {
+                case 'endurance':
+                    carbPerKg = activityFactor > 1.7 ? 8 : 6;
+                    break;
+                case 'strength':
+                    carbPerKg = 4;
+                    break;
+                case 'team':
+                    carbPerKg = 6;
+                    break;
+                case 'mixed':
+                    carbPerKg = 5;
+                    break;
+            }
+            
+            // Adjust carbs for weight loss
+            if (goal === 'lose') {
+                carbPerKg *= 0.8;
+            }
+            
+            proteinGrams = Math.round(weight * proteinPerKg);
+            carbGrams = Math.round(weight * carbPerKg);
+            
+            // Calculate fat from remaining calories
+            const proteinCalories = proteinGrams * 4;
+            const carbCalories = carbGrams * 4;
+            const fatCalories = targetCalories - proteinCalories - carbCalories;
+            fatGrams = Math.round(fatCalories / 9);
+            
+            // Ensure minimum fat intake
+            if (fatGrams < weight * 0.8) {
+                fatGrams = Math.round(weight * 0.8);
+            }
+            
+            // Recalculate actual calories
+            const actualCalories = (proteinGrams * 4) + (carbGrams * 4) + (fatGrams * 9);
+            
+            // Hydration recommendation
+            const baseHydration = Math.round(weight * 35);
+            const sportHydration = Math.round(baseHydration + (activityFactor - 1.2) * 500);
+            
+            // Meal timing suggestions
+            let mealPlan = "";
+            switch(sportType) {
+                case 'endurance':
+                    mealPlan = `
+                        <strong>Ausdauersport-Ernährungsplan:</strong><br>
+                        • Frühstück: Haferflocken mit Banane (${Math.round(carbGrams * 0.25)}g KH)<br>
+                        • Pre-Workout: Banane + Datteln (30-60g KH)<br>
+                        • Post-Workout: Schokomilch + Quark (${Math.round(proteinGrams * 0.3)}g Protein)<br>
+                        • Mittagessen: Reis mit Hähnchen und Gemüse<br>
+                        • Abendessen: Vollkornpasta mit magerem Fleisch
+                    `;
+                    break;
+                case 'strength':
+                    mealPlan = `
+                        <strong>Kraftsport-Ernährungsplan:</strong><br>
+                        • Frühstück: Rührei mit Vollkornbrot (${Math.round(proteinGrams * 0.25)}g Protein)<br>
+                        • Pre-Workout: Banane oder Kaffee<br>
+                        • Post-Workout: Protein-Shake + Haferflocken<br>
+                        • Mittagessen: Hähnchenbrust mit Süßkartoffeln<br>
+                        • Abendessen: Lachs mit Quinoa und Gemüse
+                    `;
+                    break;
+                case 'team':
+                    mealPlan = `
+                        <strong>Mannschaftssport-Ernährungsplan:</strong><br>
+                        • Frühstück: Müsli mit Joghurt und Beeren<br>
+                        • Pre-Training: Vollkornbrot mit Honig<br>
+                        • Post-Training: Schokomilch + Nüsse<br>
+                        • Mittagessen: Nudeln mit Hackfleischsauce<br>
+                        • Abendessen: Putenbrust mit Kartoffeln
+                    `;
+                    break;
+                case 'mixed':
+                    mealPlan = `
+                        <strong>Mixed-Training-Ernährungsplan:</strong><br>
+                        • Frühstück: Vollkornbrot mit Ei und Avocado<br>
+                        • Pre-Workout: Je nach Training: KH oder Protein<br>
+                        • Post-Workout: Ausgewogener Recovery-Snack<br>
+                        • Mittagessen: Ausgewogene Vollkost<br>
+                        • Abendessen: Fisch/Fleisch mit Gemüse und Beilage
+                    `;
+                    break;
+            }
+            
+            // Supplement recommendations
+            let supplements = "";
+            if (sportType === 'strength') {
+                supplements += "• Kreatin: 3-5g täglich<br>";
+            }
+            if (goal === 'lose') {
+                supplements += "• Protein-Pulver zur Unterstützung<br>";
+            }
+            supplements += "• Vitamin D: 1000-2000 IE (besonders Winter)<br>";
+            supplements += "• Omega-3: 1-2g EPA+DHA täglich<br>";
+            
+            document.getElementById('extended-result').innerHTML = `
+                <div style="text-align: left; max-width: 1000px; margin: 0 auto;">
+                    <h4>📊 Deine komplette Ernährungsstrategie:</h4>
+                    
+                    <div style="background: rgba(0,0,0,0.05); padding: 15px; border-radius: 8px; margin: 10px 0;">
+                        <strong>Energiebilanz:</strong> ${targetCalories} kcal/Tag<br>
+                        <small>${calorieAdjustment} (Grundumsatz: ${Math.round(bmr)} kcal)</small>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 15px 0;">
+                        <div style="background: rgba(230,126,34,0.2); padding: 15px; border-radius: 8px; text-align: center;">
+                            <strong>Protein</strong><br>
+                            ${proteinGrams}g/Tag<br>
+                            <small>${proteinPerKg}g/kg KG</small>
+                        </div>
+                        
+                        <div style="background: rgba(241,196,15,0.2); padding: 15px; border-radius: 8px; text-align: center;">
+                            <strong>Kohlenhydrate</strong><br>
+                            ${carbGrams}g/Tag<br>
+                            <small>${carbPerKg}g/kg KG</small>
+                        </div>
+                        
+                        <div style="background: rgba(39,174,96,0.2); padding: 15px; border-radius: 8px; text-align: center;">
+                            <strong>Fette</strong><br>
+                            ${fatGrams}g/Tag<br>
+                            <small>${Math.round(fatGrams/weight*10)/10}g/kg KG</small>
+                        </div>
+                        
+                        <div style="background: rgba(52,152,219,0.2); padding: 15px; border-radius: 8px; text-align: center;">
+                            <strong>Flüssigkeit</strong><br>
+                            ${sportHydration}ml/Tag<br>
+                            <small>+ Schweißverluste</small>
+                        </div>
+                    </div>
+                    
+                    <div style="background: rgba(155,89,182,0.1); padding: 15px; border-radius: 8px; margin: 15px 0;">
+                        ${mealPlan}
+                    </div>
+                    
+                    <div style="background: rgba(243,156,18,0.1); padding: 15px; border-radius: 8px; margin: 15px 0;">
+                        <strong>🔬 Empfohlene Supplemente:</strong><br>
+                        ${supplements}
+                        <small>Basis: Ausgewogene Ernährung hat Vorrang</small>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin: 15px 0;">
+                        <div style="background: rgba(231,76,60,0.1); padding: 10px; border-radius: 6px;">
+                            <strong>⏰ Timing-Tipps</strong><br>
+                            • 3-4h vor Training: Vollständige Mahlzeit<br>
+                            • 0-30 Min nach Training: KH + Protein<br>
+                            • Alle 3-4h: Regelmäßige Mahlzeiten
+                        </div>
+                        
+                        <div style="background: rgba(39,174,96,0.1); padding: 10px; border-radius: 6px;">
+                            <strong>💡 Praktische Tipps</strong><br>
+                            • Meal Prep am Wochenende<br>
+                            • Snacks für unterwegs vorbereiten<br>
+                            • Flexibilität: 80/20-Regel anwenden
+                        </div>
+                        
+                        <div style="background: rgba(52,152,219,0.1); padding: 10px; border-radius: 6px;">
+                            <strong>📈 Monitoring</strong><br>
+                            • Gewicht: Wöchentlich zur gleichen Zeit<br>
+                            • Leistung: Subjektives Energielevel<br>
+                            • Anpassung: Nach 2-4 Wochen evaluieren
+                        </div>
+                    </div>
+                    
+                    <div style="background: rgba(26,188,156,0.1); padding: 15px; border-radius: 8px; margin: 15px 0;">
+                        <strong>🎯 Erfolgsfaktoren für dein Ziel (${goal === 'lose' ? 'Abnehmen' : goal === 'gain' ? 'Zunehmen' : goal === 'performance' ? 'Leistung' : 'Gewicht halten'}):</strong><br>
+                        ${goal === 'lose' ? 
+                            '• Moderates Defizit für nachhaltigen Erfolg<br>• Krafttraining zum Muskelerhalt<br>• Geduld: 0.5-1kg pro Woche realistisch' :
+                            goal === 'gain' ?
+                            '• Moderater Überschuss vermeidet Fettaufbau<br>• Progressives Krafttraining entscheidend<br>• 0.25-0.5kg Zunahme pro Woche optimal' :
+                            goal === 'performance' ?
+                            '• Optimale Energieversorgung für Training<br>• Recovery-Nutrition nach intensiven Einheiten<br>• Hydration und Elektrolyte beachten' :
+                            '• Langfristige Gewichtsstabilität anstreben<br>• Ausgewogene Makronährstoffverteilung<br>• Flexibilität für Lebensqualität'
+                        }
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Animation on load
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach((section, index) => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(30px)';
+                setTimeout(() => {
+                    section.style.transition = 'all 0.6s ease';
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+        });
+    </script>
+</body>
+</html>
