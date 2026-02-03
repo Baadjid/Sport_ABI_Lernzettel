@@ -335,9 +335,148 @@
                 font-size: 20px;
             }
         }
+
+         /* Universal Navbar Styles */
+    .universal-navbar {
+        top: 0;
+        z-index: 9999;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 12px 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        flex-wrap: wrap;
+        animation: slideDown 0.5s ease-out;
+    }
+
+    @keyframes slideDown {
+        from {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    .universal-navbar-content {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        flex-wrap: wrap;
+        flex: 1;
+    }
+
+    .universal-navbar-icon {
+        font-size: 1.8em;
+        color: white;
+        text-decoration: none;
+        transition: transform 0.3s ease;
+    }
+
+    .universal-navbar-icon:hover {
+        transform: scale(1.2) rotate(5deg);
+    }
+
+    .universal-navbar-text {
+        color: white;
+        font-size: 1em;
+        font-weight: 600;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .universal-navbar-link {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        color: white;
+        text-decoration: none;
+        padding: 8px 20px;
+        border-radius: 25px;
+        font-weight: 600;
+        font-size: 0.95em;
+        transition: all 0.3s ease;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap;
+    }
+
+    .universal-navbar-link:hover {
+        background: rgba(255, 255, 255, 0.35);
+        border-color: rgba(255, 255, 255, 0.6);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .universal-navbar-link-arrow {
+        transition: transform 0.3s ease;
+    }
+
+    .universal-navbar-link:hover .universal-navbar-link-arrow {
+        transform: translateX(-3px);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .universal-navbar {
+            padding: 10px 15px;
+        }
+
+        .universal-navbar-text {
+            font-size: 0.9em;
+        }
+
+        .universal-navbar-link {
+            padding: 7px 15px;
+            font-size: 0.85em;
+        }
+
+        .universal-navbar-icon {
+            font-size: 1.5em;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .universal-navbar {
+            justify-content: center;
+        }
+
+        .universal-navbar-content {
+            justify-content: center;
+            width: 100%;
+        }
+
+        .universal-navbar-text {
+            display: none; /* Text verstecken auf sehr kleinen Bildschirmen */
+        }
+    }
     </style>
 </head>
 <body>
+
+    <nav class="universal-navbar">
+    <div class="universal-navbar-content">
+        <a href="https://baadjid.github.io/Abitur-Lernzettel_2026/" class="universal-navbar-icon" title="Zur Übersicht" aria-label="Zur Übersicht">
+            🏠
+        </a>
+        <p class="universal-navbar-text">
+            <span>📚</span>
+            <span>Abitur 2026 Lernzettel</span>
+        </p>
+    </div>
+    <a href="https://baadjid.github.io/Abitur-Lernzettel_2026/" class="universal-navbar-link">
+        <span class="universal-navbar-link-arrow">←</span>
+        <span>Alle Fächer</span>
+    </a>
+    </nav>
+    
     <div class="container">
         <div class="header">
             <div class="title">🏃‍♂️ Sport Bildungsplan - Komplette Übersicht</div>
